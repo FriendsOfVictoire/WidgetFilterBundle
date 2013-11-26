@@ -1,0 +1,5 @@
+victoire_cms:
+    widgets:
+        filter:
+            class: "Victoire\\FilterBundle\\Entity\\WidgetFilter"
+            name: filter

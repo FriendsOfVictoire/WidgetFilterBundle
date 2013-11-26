@@ -1,0 +1,17 @@
+services:
+    victoire_cms.twig.widget_filter_manager:
+        class: Victoire\FilterBundle\Widget\Manager\WidgetFilterManager
+        arguments: [@service_container]
+
+    widget_filter_manager:
+        alias: victoire_cms.twig.widget_filter_manager
+
+    victoire_cms.filter.form.type:
+        class: Victoire\FilterBundle\Filter\FilterType
+        arguments:
+            - "@doctrine.orm.entity_manager"
+        tags:
+            - { name: form.type, alias: filter }
+
+    victoire_cms.filter_chain:
+        class: "Victoire\FilterBundle\Filter\Chain\FilterChain"

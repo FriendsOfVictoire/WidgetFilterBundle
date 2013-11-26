@@ -1,0 +1,26 @@
+{% block body %}
+
+{#
+_________
+__  ____/____________ __________ ________________________
+_  /    _  __ \_  __ `__ \_  __ `__ \  __ \_  __ \_  ___/
+/ /___  / /_/ /  / / / / /  / / / / / /_/ /  / / /(__  )
+\____/  \____//_/ /_/ /_//_/ /_/ /_/\____//_/ /_//____/
+
+
+#}
+<div class="edit-widget">
+{% block form %}
+<form class="ajax" update="widget-{{id}}" method="POST" action="{{path('victoire_cms_widget_edit', {'id':id, 'type':entity} )}}">
+{#Booya ! Replace this default rendering by your own form#}
+{{form_row(form)}}
+{{form_rest(form)}}
+{% block submit %}
+<input class="btn btn-success" type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
+<a class="btn" class="cancel" onclick="cancelWidgetEdition({{id}}, '{{path('victoire_cms_widget_show', {'id':id} )}}');">{{ 'close'|trans|desc('Annuler') }}</a>
+{% endblock submit %}
+</form>
+{% endblock form %}
+
+</div>
+{% endblock body %}
