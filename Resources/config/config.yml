@@ -3,3 +3,9 @@ victoire_cms:
         filter:
             class: "Victoire\\FilterBundle\\Entity\\WidgetFilter"
             name: filter
+
+jms_translation:
+    configs:
+        victoire_filter_bundle:
+            dirs: ["@VictoireFilterBundle"]
+            output_dir: "@VictoireFilterBundle/Resources/translations"

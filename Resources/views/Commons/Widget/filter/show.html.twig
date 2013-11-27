@@ -13,7 +13,9 @@
 
 {% block content %}
     <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
-    {{form_row(filterForm)}}
+    {% for filter in widget.filters %}
+        {{form_widget(attribute(filterForm, filter))}}
+    {% endfor %}
     {{form_rest(filterForm)}}
     <input type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
     </form>

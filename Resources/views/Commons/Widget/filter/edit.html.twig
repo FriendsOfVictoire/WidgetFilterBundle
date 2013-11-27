@@ -17,7 +17,7 @@ _  /    _  __ \_  __ `__ \_  __ `__ \  __ \_  __ \_  ___/
 {{form_rest(form)}}
 {% block submit %}
 <input class="btn btn-success" type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
-<a class="btn" class="cancel" onclick="cancelWidgetEdition({{id}}, '{{path('victoire_cms_widget_show', {'id':id} )}}');">{{ 'close'|trans|desc('Annuler') }}</a>
+<a class="btn" class="cancel" onclick="cancelWidgetEdition({{id}}, '{{path('victoire_cms_widget_show', {'id':id} )}}');">{{ 'cancel'|trans|desc('Annuler') }}</a>
 {% endblock submit %}
 </form>
 {% endblock form %}
