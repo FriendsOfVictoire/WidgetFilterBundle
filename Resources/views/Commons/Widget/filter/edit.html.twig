@@ -13,7 +13,9 @@ _  /    _  __ \_  __ `__ \_  __ `__ \  __ \_  __ \_  ___/
 {% block form %}
 <form class="ajax" update="widget-{{id}}" method="POST" action="{{path('victoire_cms_widget_edit', {'id':id, 'type':entity} )}}">
 {#Booya ! Replace this default rendering by your own form#}
-{{form_row(form)}}
+{{form_row(form.list)}}
+{{form_row(form.ajax)}}
+{{form_row(form.filters)}}
 {{form_rest(form)}}
 {% block submit %}
 <input class="btn btn-success" type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />

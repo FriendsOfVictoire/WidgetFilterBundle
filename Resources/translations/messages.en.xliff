@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file date="2013-11-27T18:14:17Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
+  <file date="2013-11-28T17:11:54Z" source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -9,19 +9,34 @@
       <trans-unit id="4fd0653c4f2aef3b19a3c145bbdc5f4740715a09" resname="cancel">
         <source>Annuler</source>
         <target state="new">Annuler</target>
-        <jms:reference-file line="20">Widget/filter/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="22">Widget/filter/edit.html.twig</jms:reference-file>
         <jms:reference-file line="18">Widget/filter/new.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="7a85f4764bbd6daf1c3545efbbf0f279a6dc0beb" resname="ok">
         <source>Ok</source>
         <target state="new">Ok</target>
-        <jms:reference-file line="19">Widget/filter/edit.html.twig</jms:reference-file>
+        <jms:reference-file line="21">Widget/filter/edit.html.twig</jms:reference-file>
         <jms:reference-file line="17">Widget/filter/new.html.twig</jms:reference-file>
-        <jms:reference-file line="18">Widget/filter/show.html.twig</jms:reference-file>
+        <jms:reference-file line="20">Widget/filter/show.html.twig</jms:reference-file>
       </trans-unit>
       <trans-unit id="1b923cf14f446e4c3193095d92965bc320875c86" resname="widget.filter.new.action.label">
         <source>widget.filter.new.action.label</source>
         <target state="new">widget.filter.new.action.label</target>
+      </trans-unit>
+      <trans-unit id="17dd1ed4a4ca9785f38cd4a62fbb68ea85a1ac27" resname="widget_filter.form.ajax.label">
+        <source>widget_filter.form.ajax.label</source>
+        <target state="new">widget_filter.form.ajax.label</target>
+        <jms:reference-file line="33">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d472e1682ee126380c99cbec0bea7dbc32202ad0" resname="widget_filter.form.filters.label">
+        <source>widget_filter.form.filters.label</source>
+        <target state="new">widget_filter.form.filters.label</target>
+        <jms:reference-file line="36">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="666e2af4eb2e64c52b2d081b4f79e99c1749ed71" resname="widget_filter.form.list.label">
+        <source>widget_filter.form.list.label</source>
+        <target state="new">widget_filter.form.list.label</target>
+        <jms:reference-file line="30">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
       </trans-unit>
     </body>
   </file>
