@@ -9,7 +9,7 @@
 #}
 
 <div class="widget" id="widget-{{widget.id}}">
-{% block actions %}{{cms_widget_actions(widget)}}{% endblock actions %}
+{% block actions %}{{cms_widget_actions(widget, page)}}{% endblock actions %}
 
 {% block content %}
     <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
