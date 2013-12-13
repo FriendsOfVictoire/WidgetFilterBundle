@@ -41,7 +41,7 @@ protected $container;
      *
      * @return widget show
      */
-    public function render($widget, $page)
+    public function render($widget)
     {
         $options = array(
             'list_id' => $widget->getList()->getId(),
@@ -65,8 +65,7 @@ protected $container;
                 "widget" => $widget,
                 "action" => $action,
                 "ajax" => $ajax,
-                "filterForm"  => $filterForm->createView(),
-                "page" => $page
+                "filterForm"  => $filterForm->createView()
             )
         );
     }
