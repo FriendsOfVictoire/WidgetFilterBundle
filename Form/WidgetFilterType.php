@@ -47,9 +47,10 @@ class WidgetFilterType extends WidgetType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Victoire\FilterBundle\Entity\WidgetFilter',
-            'widget' => 'filter',
-            'filters' => array()
+            'data_class'         => 'Victoire\FilterBundle\Entity\WidgetFilter',
+            'widget'             => 'filter',
+            'filters'            => array(),
+            'translation_domain' => 'victoire'
         ));
     }
 
