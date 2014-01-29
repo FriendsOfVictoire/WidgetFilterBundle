@@ -1,5 +1,5 @@
 {
-    "name": "victoire/filter-bundle",
+    "name": "victoire/filter-widget",
     "type": "symfony-bundle",
     "description": "Victoire Cms Filter widget",
     "keywords": ["cms", "victoire", "widget", "filter"],
