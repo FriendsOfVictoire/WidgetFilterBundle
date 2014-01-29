@@ -60,7 +60,7 @@ protected $container;
         }
 
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle:Widget:filter/show.html.twig",
+            "VictoireFilterBundle::show.html.twig",
             array(
                 "widget" => $widget,
                 "action" => $action,
@@ -81,7 +81,7 @@ protected $container;
     {
         // print_r($form->getName());exit;
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle:Widget:filter/edit.html.twig",
+            "VictoireFilterBundle::edit.html.twig",
             array(
                 "widget" => $widget,
                 'form'   => $form->createView(),
@@ -120,7 +120,7 @@ protected $container;
     {
 
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle:Widget:filter/new.html.twig",
+            "VictoireFilterBundle::new.html.twig",
             array(
                 "widget"          => $widget,
                 'form'            => $form->createView(),
