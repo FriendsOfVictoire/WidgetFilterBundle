@@ -11,14 +11,14 @@ class FilterCompilerPass implements CompilerPassInterface
 
     public function process(ContainerBuilder $container)
     {
-        if ($container->hasDefinition('victoire_cms.filter_chain')) {
+        if ($container->hasDefinition('victoire_core.filter_chain')) {
 
             $definition = $container->getDefinition(
-                'victoire_cms.filter_chain'
+                'victoire_core.filter_chain'
             );
 
             $taggedServices = $container->findTaggedServiceIds(
-                'victoire_cms.filter'
+                'victoire_core.filter'
             );
             foreach ($taggedServices as $id => $attributes) {
                 $definition->addMethodCall(

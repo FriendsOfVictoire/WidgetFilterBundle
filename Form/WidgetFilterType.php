@@ -5,8 +5,8 @@ namespace Victoire\FilterBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Victoire\CmsBundle\Form\EntityProxyFormType;
-use Victoire\CmsBundle\Form\WidgetType;
+use Victoire\Bundle\CoreBundle\Form\EntityProxyFormType;
+use Victoire\Bundle\CoreBundle\Form\WidgetType;
 
 
 /**
@@ -59,6 +59,6 @@ class WidgetFilterType extends WidgetType
      */
     public function getName()
     {
-        return 'appventus_victoirecmsbundle_widgetfiltertype';
+        return 'appventus_victoireCoreBundle_widgetfiltertype';
     }
 }

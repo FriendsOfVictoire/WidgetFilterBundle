@@ -51,11 +51,11 @@ protected $container;
                            ->create('filter', null, $options);
 
         if ($widget->getPage()->getId() === $widget->getList()->getPage()->getId() && $widget->getAjax()) {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_cms_widget_show', array('id' => $widget->getList()));
+            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_widget_show', array('id' => $widget->getList()));
             $ajax = true;
 
         } else {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_cms_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
+            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
             $ajax = false;
         }
 
@@ -100,7 +100,7 @@ protected $container;
      */
     public function buildForm($widget, $entityName = null, $namespace = null)
     {
-        $filters = $this->container->get('victoire_cms.filter_chain')->getFilters();
+        $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
         $form = $this->container->get('form.factory')->create(new WidgetFilterType($entityName, $namespace), $widget, array('filters' => $filters));
 
         return $form;

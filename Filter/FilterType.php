@@ -5,7 +5,7 @@ namespace Victoire\FilterBundle\Filter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Victoire\CmsBundle\Form\EntityProxyFormType;
+use Victoire\Bundle\CoreBundle\Form\EntityProxyFormType;
 use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
