@@ -59,6 +59,6 @@ class WidgetFilterType extends WidgetType
      */
     public function getName()
     {
-        return 'appventus_victoireCoreBundle_widgetfiltertype';
+        return 'appventus_victoirecorebundle_widgetfiltertype';
     }
 }
