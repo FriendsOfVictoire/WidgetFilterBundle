@@ -26,7 +26,7 @@ class WidgetFilterType extends WidgetType
         foreach ($options['filters'] as $filter) {
             $choices[$filter->getName()] = $filter->getName();
         }
-        $builder->add('list', null, array(
+        $builder->add('listing', null, array(
                     'label' => 'widget_filter.form.list.label'
                 ))
                 ->add('ajax', null, array(

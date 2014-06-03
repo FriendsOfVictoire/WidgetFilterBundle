@@ -31,7 +31,7 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('list', 'hidden', array(
+            ->add('listing', 'hidden', array(
                 'data' => $options['list_id']
             ));
 

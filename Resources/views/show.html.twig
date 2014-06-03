@@ -8,11 +8,11 @@
 
 #}
 
-<div class="vic-widget" id="widget-{{widget.id}}">
+<div class="vic-widget" id="vic-widget-{{widget.id}}">
 {% block actions %}{{cms_widget_actions(widget)}}{% endblock actions %}
 
 {% block content %}
-    <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
+    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" data-update="vic-widget-{{widget.listing.id}}-container"{% endif %} >
     {% for filter in widget.filters %}
         {{form_widget(attribute(filterForm, filter))}}
     {% endfor %}

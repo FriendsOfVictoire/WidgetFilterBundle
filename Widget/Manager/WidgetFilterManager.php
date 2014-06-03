@@ -3,12 +3,13 @@
 namespace Victoire\FilterBundle\Widget\Manager;
 
 
-use Victoire\FilterBundle\Form\WidgetFilterType;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Victoire\FilterBundle\Entity\WidgetFilter;
+use Victoire\FilterBundle\Form\WidgetFilterType;
 
 class WidgetFilterManager
 {
-protected $container;
+    protected $container;
 
     /**
      * constructor
@@ -43,19 +44,22 @@ protected $container;
      */
     public function render($widget)
     {
+        if ($widget->getListing() === null) {
+            throw new NotFoundHttpException('The filter widget ' . $widget->getId() . ' seems not be related to a valid list');
+        }
         $options = array(
-            'list_id' => $widget->getList()->getId(),
+            'list_id' => $widget->getListing()->getId(),
             'filters' => $widget->getFilters()
         );
         $filterForm = $this->container->get('form.factory')
                            ->create('filter', null, $options);
 
-        if ($widget->getPage()->getId() === $widget->getList()->getPage()->getId() && $widget->getAjax()) {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_widget_show', array('id' => $widget->getList()));
+        if ($widget->getPage()->getId() === $widget->getListing()->getPage()->getId() && $widget->getAjax()) {
+            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_widget_show', array('id' => $widget->getListing()->getId()));
             $ajax = true;
 
         } else {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
+            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_page_show', array('url' => $widget->getListing()->getPage()->getUrl()));
             $ajax = false;
         }
 
