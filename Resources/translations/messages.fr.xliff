@@ -19,25 +19,6 @@
         <jms:reference-file line="17">Widget/filter/new.html.twig</jms:reference-file>
         <jms:reference-file line="20">Widget/filter/show.html.twig</jms:reference-file>
       </trans-unit>
-      <trans-unit id="1b923cf14f446e4c3193095d92965bc320875c86" resname="widget.filter.new.action.label">
-        <source>widget.filter.new.action.label</source>
-        <target>Filtre</target>
-      </trans-unit>
-      <trans-unit id="17dd1ed4a4ca9785f38cd4a62fbb68ea85a1ac27" resname="widget_filter.form.ajax.label">
-        <source>widget_filter.form.ajax.label</source>
-        <target>Mode ajax</target>
-        <jms:reference-file line="33">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="d472e1682ee126380c99cbec0bea7dbc32202ad0" resname="widget_filter.form.filters.label">
-        <source>widget_filter.form.filters.label</source>
-        <target>Filtres</target>
-        <jms:reference-file line="36">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
-      </trans-unit>
-      <trans-unit id="666e2af4eb2e64c52b2d081b4f79e99c1749ed71" resname="widget_filter.form.list.label">
-        <source>widget_filter.form.list.label</source>
-        <target>Widget liste à filtrer</target>
-        <jms:reference-file line="30">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
-      </trans-unit>
     </body>
   </file>
 </xliff>
