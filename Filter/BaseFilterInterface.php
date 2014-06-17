@@ -1,5 +1,5 @@
 <?php
-namespace Victoire\FilterBundle\Filter;
+namespace Victoire\Widget\FilterBundle\Filter;
 
 use Symfony\Component\Form\AbstractType;
 use Doctrine\ORM\QueryBuilder;

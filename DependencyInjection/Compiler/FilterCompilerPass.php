@@ -1,5 +1,5 @@
 <?php
-namespace Victoire\FilterBundle\DependencyInjection\Compiler;
+namespace Victoire\Widget\FilterBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

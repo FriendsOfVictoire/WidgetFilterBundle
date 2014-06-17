@@ -7,5 +7,5 @@ victoire_core:
 jms_translation:
     configs:
         victoire_filter_bundle:
-            dirs: ["@VictoireFilterBundle"]
-            output_dir: "@VictoireFilterBundle/Resources/translations"
+            dirs: ["@VictoireWidgetFilterBundle"]
+            output_dir: "@VictoireWidgetFilterBundle/Resources/translations"

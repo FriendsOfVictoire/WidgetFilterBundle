@@ -1,5 +1,5 @@
 <?php
-namespace Victoire\FilterBundle\Translation;
+namespace Victoire\Widget\FilterBundle\Translation;
 
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;

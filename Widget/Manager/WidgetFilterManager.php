@@ -1,10 +1,10 @@
 <?php
 
-namespace Victoire\FilterBundle\Widget\Manager;
+namespace Victoire\Widget\FilterBundle\Widget\Manager;
 
 
-use Victoire\FilterBundle\Form\WidgetFilterType;
-use Victoire\FilterBundle\Entity\WidgetFilter;
+use Victoire\Widget\FilterBundle\Form\WidgetFilterType;
+use Victoire\Widget\FilterBundle\Entity\WidgetFilter;
 
 class WidgetFilterManager
 {
@@ -60,7 +60,7 @@ protected $container;
         }
 
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::show.html.twig",
+            "VictoireWidgetFilterBundle::show.html.twig",
             array(
                 "widget" => $widget,
                 "action" => $action,
@@ -81,7 +81,7 @@ protected $container;
     {
         // print_r($form->getName());exit;
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::edit.html.twig",
+            "VictoireWidgetFilterBundle::edit.html.twig",
             array(
                 "widget" => $widget,
                 'form'   => $form->createView(),
@@ -120,7 +120,7 @@ protected $container;
     {
 
         return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::new.html.twig",
+            "VictoireWidgetFilterBundle::new.html.twig",
             array(
                 "widget"          => $widget,
                 'form'            => $form->createView(),

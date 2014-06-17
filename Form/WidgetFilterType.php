@@ -1,6 +1,6 @@
 <?php
 
-namespace Victoire\FilterBundle\Form;
+namespace Victoire\Widget\FilterBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -47,7 +47,7 @@ class WidgetFilterType extends WidgetType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Victoire\FilterBundle\Entity\WidgetFilter',
+            'data_class'         => 'Victoire\Widget\FilterBundle\Entity\WidgetFilter',
             'widget'             => 'filter',
             'filters'            => array(),
             'translation_domain' => 'victoire'

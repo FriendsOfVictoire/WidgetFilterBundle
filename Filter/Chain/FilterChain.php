@@ -1,5 +1,5 @@
 <?php
-namespace Victoire\FilterBundle\Filter\Chain;
+namespace Victoire\Widget\FilterBundle\Filter\Chain;
 
 use Symfony\Component\Form\AbstractType;
 
