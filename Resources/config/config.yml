@@ -1,7 +1,7 @@
 victoire_core:
     widgets:
         filter:
-            class: "Victoire\\FilterBundle\\Entity\\WidgetFilter"
+            class: "Victoire\\Widget\\FilterBundle\\Entity\\WidgetFilter"
             name: filter
 
 jms_translation:

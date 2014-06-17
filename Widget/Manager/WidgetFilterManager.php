@@ -47,54 +47,95 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
         return 'Filter';
     }
 
+
     /**
-     * render the WidgetFilter
-     * @param Widget $widget
+     * Get the static content of the widget
      *
-     * @return widget show
+     * @param Widget $widget
+     * @return string The static content
+     *
+     * @SuppressWarnings checkUnusedFunctionParameters
      */
-    public function render($widget)
+    protected function getWidgetStaticContent(Widget $widget)
     {
         $options = array(
             'list_id' => $widget->getList()->getId(),
             'filters' => $widget->getFilters()
         );
-        $filterForm = $this->container->get('form.factory')
-                           ->create('filter', null, $options);
+
+        $formFactory = $this->container->get('form.factory');
+        $router = $this->container->get('router');
+        $routerGenerator = $router->getGenerator();
+        $filterForm = $formFactory->create('victoire_form_filter', null, $options);
 
         if ($widget->getPage()->getId() === $widget->getList()->getPage()->getId() && $widget->getAjax()) {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_widget_show', array('id' => $widget->getList()));
+            $action = $routerGenerator->generate('victoire_core_widget_show', array('id' => $widget->getList()));
             $ajax = true;
-
         } else {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
+            $action = $routerGenerator->generate('victoire_core_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
             $ajax = false;
         }
 
-        return $this->container->get('victoire_templating')->render(
-            "VictoireWidgetFilterBundle::show.html.twig",
-            array(
-                "widget" => $widget,
-                "action" => $action,
-                "ajax" => $ajax,
-                "filterForm"  => $filterForm->createView()
-            )
+        $content = array(
+            "widget" => $widget,
+            "action" => $action,
+            "ajax" => $ajax,
+            "filterForm"  => $filterForm->createView()
         );
+
+        return $content;
     }
 
 
     /**
      * create a form with given widget
-     * @param WidgetFilter $widget
+     * @param WidgetRedactor $widget
      * @param string         $entityName
      * @param string         $namespace
+     *
      * @return $form
+     *
+     * @throws \Exception
      */
-    public function buildForm($widget, $entityName = null, $namespace = null)
+    public function buildWidgetForm($widget, $entityName = null, $namespace = null)
     {
+        //test parameters
+        if ($entityName !== null) {
+            if ($namespace === null) {
+                throw new \Exception('The namespace is mandatory if the entityName is given');
+            }
+        }
+
+        $container = $this->container;
+        $formFactory = $container->get('form.factory');
+
+        $formAlias = 'victoire_widget_form_'.strtolower($this->getWidgetName());
+
         $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
-        $form = $this->container->get('form.factory')->create(new WidgetFilterType($entityName, $namespace), $widget, array('filters' => $filters));
+
+        $form = $formFactory->create($formAlias, $widget,
+            array(
+                'entityName' => $entityName,
+                'namespace' => $namespace,
+                'filters' => $filters
+            )
+        );
 
         return $form;
     }
+
+//     /**
+//      * create a form with given widget
+//      * @param WidgetFilter $widget
+//      * @param string         $entityName
+//      * @param string         $namespace
+//      * @return $form
+//      */
+//     public function buildForm($widget, $entityName = null, $namespace = null)
+//     {
+//         $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
+//         $form = $this->container->get('form.factory')->create(new WidgetFilterType($entityName, $namespace), $widget, array('filters' => $filters));
+
+//         return $form;
+//     }
 }

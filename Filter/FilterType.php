@@ -17,12 +17,6 @@ use Doctrine\ORM\EntityManager;
  */
 class FilterType extends AbstractType
 {
-    protected $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
     /**
      * define form fields
      * @param FormBuilderInterface $builder
@@ -43,7 +37,9 @@ class FilterType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * Set the options
+     *
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
@@ -56,9 +52,11 @@ class FilterType extends AbstractType
 
     /**
      * get form name
+     *
+     * @return String The name of the form
      */
     public function getName()
     {
-        return 'filter';
+        return 'victoire_form_filter';
     }
 }

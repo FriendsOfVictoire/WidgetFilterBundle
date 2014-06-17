@@ -1,25 +1,14 @@
-{% block body %}
-
-{#
-   _   _   _   _   _   _   _
-  / \ / \ / \ / \ / \ / \ / \
- ( C ) o ) m ) m ) o ) n ) s )
-  \_/ \_/ \_/ \_/ \_/ \_/ \_/
-
-#}
-
-<div class="vic-widget" id="widget-{{widget.id}}">
-{% block actions %}{{cms_widget_actions(widget)}}{% endblock actions %}
+{% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
-    <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
+    <form method="GET" action="{{content.action}}" {% if content.ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
     {% for filter in widget.filters %}
-        {{form_widget(attribute(filterForm, filter))}}
+        {{form_widget(attribute(content.filterForm, filter))}}
     {% endfor %}
-    {{form_rest(filterForm)}}
+    {{form_rest(content.filterForm)}}
     <input type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
     </form>
 {% endblock content %}
-</div>
 
-{% endblock body %}
+
+
