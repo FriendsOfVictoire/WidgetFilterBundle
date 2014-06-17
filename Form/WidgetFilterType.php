@@ -46,6 +46,8 @@ class WidgetFilterType extends WidgetType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        parent::setDefaultOptions($resolver);
+
         $resolver->setDefaults(array(
             'data_class'         => 'Victoire\Widget\FilterBundle\Entity\WidgetFilter',
             'widget'             => 'filter',
@@ -56,9 +58,11 @@ class WidgetFilterType extends WidgetType
 
     /**
      * get form name
+     *
+     * @return string
      */
     public function getName()
     {
-        return 'appventus_victoirecorebundle_widgetfiltertype';
+        return 'victoire_widget_form_filter';
     }
 }
