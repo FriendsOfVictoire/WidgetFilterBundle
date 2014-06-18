@@ -9,7 +9,7 @@ use Victoire\Widget\FilterBundle\Filter\BaseFilterInterface;
 
 abstract class BaseFilter extends AbstractType implements BaseFilterInterface
 {
-    public function buildQuery(QueryBuilder &$qb, array $parameters)
+    public function buildQuery(QueryBuilder $qb, array $parameters)
     {
     }
 
