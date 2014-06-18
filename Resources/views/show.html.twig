@@ -1,5 +1,5 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
-
+{% trans_default_domain "victoire" %}
 {% block content %}
     <form method="GET" action="{{content.action}}" {% if content.ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
     {% for filter in widget.filters %}
