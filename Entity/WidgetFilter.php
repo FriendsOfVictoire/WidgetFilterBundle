@@ -19,7 +19,7 @@ class WidgetFilter extends Widget
      * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
-    private $list;
+    private $listing;
 
     /**
      * filters
@@ -36,24 +36,24 @@ class WidgetFilter extends Widget
     /**
      * Set list
      *
-     * @param string $list
+     * @param string $listing
      * @return WidgetFilter
      */
-    public function setList($list)
+    public function setListing($listing)
     {
-        $this->list = $list;
+        $this->listing = $listing;
 
         return $this;
     }
 
     /**
-     * Get list
+     * Get listing
      *
      * @return string
      */
-    public function getList()
+    public function getListing()
     {
-        return $this->list;
+        return $this->listing;
     }
 
     /**
