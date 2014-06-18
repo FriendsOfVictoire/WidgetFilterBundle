@@ -25,15 +25,13 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('list', 'hidden', array(
-                'data' => $options['list_id']
+            ->add('listing', 'hidden', array(
+                'data' => $options['listing_id']
             ));
 
         foreach ($options['filters'] as $filter) {
             $builder->add($filter, $filter);
         }
-
-
     }
 
     /**
@@ -45,7 +43,7 @@ class FilterType extends AbstractType
     {
         $resolver->setDefaults(array(
             'csrf_protection'   => false,
-            'list_id'   => null,
+            'listing_id'   => null,
             'filters'   => array(),
         ));
     }

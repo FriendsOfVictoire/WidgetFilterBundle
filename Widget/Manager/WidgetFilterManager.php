@@ -59,7 +59,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
     protected function getWidgetStaticContent(Widget $widget)
     {
         $options = array(
-            'list_id' => $widget->getList()->getId(),
+            'listing_id' => $widget->getList()->getId(),
             'filters' => $widget->getFilters()
         );
 
