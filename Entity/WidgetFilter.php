@@ -19,19 +19,19 @@ class WidgetFilter extends Widget
      * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
-    private $listing;
+    protected $listing;
 
     /**
      * filters
      * @ORM\Column(name="filters", type="array")
      */
-    private $filters;
+    protected $filters;
 
     /**
      * ajax
      * @ORM\Column(name="ajax", type="boolean")
      */
-    private $ajax = true;
+    protected $ajax = true;
 
     /**
      * Set list

@@ -1,7 +1,7 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 {% trans_default_domain "victoire" %}
 {% block content %}
-    <form method="GET" action="{{content.action}}" {% if content.ajax %}class="ajax" update="widget-{{widget.list.id}}-container"{% endif %} >
+    <form method="GET" action="{{content.action}}" {% if content.ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %} >
     {% for filter in widget.filters %}
         {{form_widget(attribute(content.filterForm, filter))}}
     {% endfor %}
@@ -9,6 +9,3 @@
     <input type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
     </form>
 {% endblock content %}
-
-
-

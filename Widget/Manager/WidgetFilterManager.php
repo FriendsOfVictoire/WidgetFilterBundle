@@ -58,8 +58,14 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
      */
     protected function getWidgetStaticContent(Widget $widget)
     {
+        $widgetListing = $widget->getListing();
+
+        if ($widgetListing === null) {
+            throw new \Exception('The widget ['.$widget->getId().'] has no widgetListing.');
+        }
+
         $options = array(
-            'listing_id' => $widget->getList()->getId(),
+            'listing_id' => $widgetListing->getId(),
             'filters' => $widget->getFilters()
         );
 
@@ -68,11 +74,11 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
         $routerGenerator = $router->getGenerator();
         $filterForm = $formFactory->create('victoire_form_filter', null, $options);
 
-        if ($widget->getPage()->getId() === $widget->getList()->getPage()->getId() && $widget->getAjax()) {
-            $action = $routerGenerator->generate('victoire_core_widget_show', array('id' => $widget->getList()));
+        if ($widget->getPage()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
+            $action = $routerGenerator->generate('victoire_core_widget_show', array('id' => $widgetListing->getId()));
             $ajax = true;
         } else {
-            $action = $routerGenerator->generate('victoire_core_page_show', array('url' => $widget->getList()->getPage()->getUrl()));
+            $action = $routerGenerator->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
             $ajax = false;
         }
 
