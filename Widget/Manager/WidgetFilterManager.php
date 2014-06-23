@@ -54,6 +54,8 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
      * @param Widget $widget
      * @return string The static content
      *
+     * @throws Exception
+     *
      * @SuppressWarnings checkUnusedFunctionParameters
      */
     protected function getWidgetStaticContent(Widget $widget)
@@ -96,14 +98,16 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
     /**
      * create a form with given widget
      * @param WidgetRedactor $widget
+     * @param BasePage       $page
      * @param string         $entityName
      * @param string         $namespace
+     * @param boolean        $mode
      *
      * @return $form
      *
      * @throws \Exception
      */
-    public function buildWidgetForm($widget, $entityName = null, $namespace = null, $mode = null)
+    public function buildWidgetForm($widget, BasePage $page, $entityName = null, $namespace = null, $mode = null)
     {
         //test parameters
         if ($entityName !== null) {
@@ -130,19 +134,4 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
 
         return $form;
     }
-
-//     /**
-//      * create a form with given widget
-//      * @param WidgetFilter $widget
-//      * @param string         $entityName
-//      * @param string         $namespace
-//      * @return $form
-//      */
-//     public function buildForm($widget, $entityName = null, $namespace = null)
-//     {
-//         $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
-//         $form = $this->container->get('form.factory')->create(new WidgetFilterType($entityName, $namespace), $widget, array('filters' => $filters));
-
-//         return $form;
-//     }
 }
