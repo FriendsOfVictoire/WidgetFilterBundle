@@ -11,6 +11,8 @@ use Victoire\Bundle\CoreBundle\Widget\Managers\BaseWidgetManager;
 use Victoire\Bundle\CoreBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Widget\Managers\WidgetManagerInterface;
 
+use Victoire\Bundle\PageBundle\Entity\BasePage;
+
 /**
  * CRUD operations on WidgetRedactor Widget
  *
