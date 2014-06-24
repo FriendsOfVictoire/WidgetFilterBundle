@@ -23,9 +23,11 @@ class WidgetFilterType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = array();
+
         foreach ($options['filters'] as $filter) {
             $choices[$filter->getName()] = 'widget_filter.' . $filter->getName();
         }
+
         $builder->add('listing', null, array(
                     'label' => 'widget_filter.form.list.label'
                 ))
@@ -37,6 +39,13 @@ class WidgetFilterType extends WidgetType
                     'multiple' => true,
                     'choices' => $choices
                 ));
+
+        $mode = $options['mode'];
+
+        //add the mode to the form
+        $builder->add('mode', 'hidden', array(
+            'data' => $mode
+        ));
     }
 
 

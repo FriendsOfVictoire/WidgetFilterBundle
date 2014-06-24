@@ -109,7 +109,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
      *
      * @throws \Exception
      */
-    public function buildWidgetForm($widget, BasePage $page, $entityName = null, $namespace = null, $mode = null)
+    public function buildWidgetForm($widget, BasePage $page, $entityName = null, $namespace = null, $mode = Widget::MODE_STATIC)
     {
         //test parameters
         if ($entityName !== null) {
