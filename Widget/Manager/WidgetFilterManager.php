@@ -120,17 +120,38 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
 
         $container = $this->container;
         $formFactory = $container->get('form.factory');
-
+        $router = $this->container->get('router');
         $formAlias = 'victoire_widget_form_'.strtolower($this->getWidgetName());
 
         $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
+
+        //are we updating or creating the widget?
+        if ($widget->getId() === null) {
+            $formUrl = $router->generate('victoire_core_widget_create',
+                array(
+                    'page' => $page->getId(),
+                    'slot' => $widget->getSlot(),
+                    'type' => $widget->getType(),
+                    'entity' => $entityName
+                )
+            );
+        } else {
+            $formUrl = $router->generate('victoire_core_widget_update',
+                array(
+                    'id' => $widget->getId(),
+                    'type' => $entityName
+                )
+            );
+        }
 
         $form = $formFactory->create($formAlias, $widget,
             array(
                 'entityName' => $entityName,
                 'namespace' => $namespace,
                 'mode' => $mode,
-                'filters' => $filters
+                'filters' => $filters,
+                'action'  => $formUrl,
+                'method' => 'POST'
             )
         );
 
