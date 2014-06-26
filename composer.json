@@ -14,13 +14,13 @@
     "require": {
         "php"                                 : ">=5.3.3",
         "symfony/framework-bundle"            : "~2.3",
-        "victoire/cms-bundle"                 : "~0.1"
+        "victoire/victoire"                   : ">=0.1.4"
     },    
     "autoload": {
-        "psr-0": { "Victoire\\FilterBundle": "" }
+        "psr-0": { "Victoire\\Widget\\FilterBundle": "" }
     },
     "minimum-stability": "dev",
 
 
-    "target-dir": "Victoire/FilterBundle"
+    "target-dir": "Victoire/Widget/FilterBundle"
 }

@@ -1,17 +1,27 @@
 services:
+    victoire_core.filter_chain:
+        class: Victoire\Widget\FilterBundle\Filter\Chain\FilterChain
+
     victoire_core.twig.widget_filter_manager:
-        class: Victoire\FilterBundle\Widget\Manager\WidgetFilterManager
-        arguments: [@service_container]
+        class: Victoire\Widget\FilterBundle\Widget\Manager\WidgetFilterManager
+        arguments: 
+            - "@service_container"
 
     widget_filter_manager:
         alias: victoire_core.twig.widget_filter_manager
-
-    victoire_core.filter.form.type:
-        class: Victoire\FilterBundle\Filter\FilterType
-        arguments:
-            - "@doctrine.orm.entity_manager"
+        
+    #alias to the entity
+    victoire.widget.filter:
+        class: Victoire\Widget\FilterBundle\Entity\WidgetFilter
+    #alias to the form
+    victoire.widget.form.filter:
+        class: Victoire\Widget\FilterBundle\Form\WidgetFilterType
         tags:
-            - { name: form.type, alias: filter }
+            - { name: form.type , alias: victoire_widget_form_filter}
 
-    victoire_core.filter_chain:
-        class: "Victoire\FilterBundle\Filter\Chain\FilterChain"
+            
+    #alias to the form
+    victoire.form.filter:
+        class: Victoire\Widget\FilterBundle\Filter\FilterType
+        tags:
+            - { name: form.type , alias: victoire_form_filter}

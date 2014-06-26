@@ -1,138 +1,160 @@
 <?php
 
-namespace Victoire\FilterBundle\Widget\Manager;
+namespace Victoire\Widget\FilterBundle\Widget\Manager;
 
 
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Victoire\FilterBundle\Entity\WidgetFilter;
-use Victoire\FilterBundle\Form\WidgetFilterType;
+use Victoire\Widget\FilterBundle\Form\WidgetFilterType;
+use Victoire\Widget\FilterBundle\Entity\WidgetFilter;
 
-class WidgetFilterManager
+
+use Victoire\Bundle\CoreBundle\Widget\Managers\BaseWidgetManager;
+use Victoire\Bundle\CoreBundle\Entity\Widget;
+use Victoire\Bundle\CoreBundle\Widget\Managers\WidgetManagerInterface;
+
+use Victoire\Bundle\PageBundle\Entity\BasePage;
+
+/**
+ * CRUD operations on WidgetRedactor Widget
+ *
+ * The widget view has two parameters: widget and content
+ *
+ * widget: The widget to display, use the widget as you wish to render the view
+ * content: This variable is computed in this WidgetManager, you can set whatever you want in it and display it in the show view
+ *
+ * The content variable depends of the mode: static/businessEntity/entity/query
+ *
+ * The content is given depending of the mode by the methods:
+ *  getWidgetStaticContent
+ *  getWidgetBusinessEntityContent
+ *  getWidgetEntityContent
+ *  getWidgetQueryContent
+ *
+ * So, you can use the widget or the content in the show.html.twig view.
+ * If you want to do some computation, use the content and do it the 4 previous methods.
+ *
+ * If you just want to use the widget and not the content, remove the method that throws the exceptions.
+ *
+ * By default, the methods throws Exception to notice the developer that he should implements it owns logic for the widget
+ *
+ */
+class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInterface
 {
-    protected $container;
-
     /**
-     * constructor
+     * The name of the widget
      *
-     * @param ServiceContainer $container
+     * @return string
      */
-    public function __construct($container)
+    public function getWidgetName()
     {
-        $this->container = $container;
+        return 'Filter';
     }
 
-    /**
-     * create a new WidgetFilter
-     * @param Page   $page
-     * @param string $slot
-     *
-     * @return $widget
-     */
-    public function newWidget($page, $slot)
-    {
-        $widget = new WidgetFilter();
-        $widget->setPage($page);
-        $widget->setslot($slot);
 
-        return $widget;
-    }
     /**
-     * render the WidgetFilter
+     * Get the static content of the widget
+     *
      * @param Widget $widget
+     * @return string The static content
      *
-     * @return widget show
+     * @throws Exception
+     *
+     * @SuppressWarnings checkUnusedFunctionParameters
      */
-    public function render($widget)
+    protected function getWidgetStaticContent(Widget $widget)
     {
-        if ($widget->getListing() === null) {
-            throw new NotFoundHttpException('The filter widget ' . $widget->getId() . ' seems not be related to a valid list');
+        $widgetListing = $widget->getListing();
+
+        if ($widgetListing === null) {
+            throw new \Exception('The widget ['.$widget->getId().'] has no widgetListing.');
         }
+
         $options = array(
-            'list_id' => $widget->getListing()->getId(),
+            'listing_id' => $widgetListing->getId(),
             'filters' => $widget->getFilters()
         );
-        $filterForm = $this->container->get('form.factory')
-                           ->create('filter', null, $options);
 
-        if ($widget->getPage()->getId() === $widget->getListing()->getPage()->getId() && $widget->getAjax()) {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_widget_show', array('id' => $widget->getListing()->getId()));
+        $formFactory = $this->container->get('form.factory');
+        $router = $this->container->get('router');
+        $routerGenerator = $router->getGenerator();
+        $filterForm = $formFactory->create('victoire_form_filter', null, $options);
+
+        if ($widget->getPage()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
+            $action = $routerGenerator->generate('victoire_core_widget_show', array('id' => $widgetListing->getId()));
             $ajax = true;
-
         } else {
-            $action = $this->container->get('router')->getGenerator()->generate('victoire_core_page_show', array('url' => $widget->getListing()->getPage()->getUrl()));
+            $action = $routerGenerator->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
             $ajax = false;
         }
 
-        return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::show.html.twig",
-            array(
-                "widget" => $widget,
-                "action" => $action,
-                "ajax" => $ajax,
-                "filterForm"  => $filterForm->createView()
-            )
+        $content = array(
+            "widget" => $widget,
+            "action" => $action,
+            "ajax" => $ajax,
+            "filterForm"  => $filterForm->createView()
         );
+
+        return $content;
     }
 
-    /**
-     * render WidgetFilter form
-     * @param Form           $form
-     * @param WidgetFilter $widget
-     * @param BusinessEntity $entity
-     * @return form
-     */
-    public function renderForm($form, $widget, $entity = null)
-    {
-        // print_r($form->getName());exit;
-        return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::edit.html.twig",
-            array(
-                "widget" => $widget,
-                'form'   => $form->createView(),
-                'id'     => $widget->getId(),
-                'entity' => $entity
-            )
-        );
-    }
 
     /**
      * create a form with given widget
-     * @param WidgetFilter $widget
+     * @param WidgetRedactor $widget
+     * @param BasePage       $page
      * @param string         $entityName
      * @param string         $namespace
-     * @return $form
-     */
-    public function buildForm($widget, $entityName = null, $namespace = null)
-    {
-        $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
-        $form = $this->container->get('form.factory')->create(new WidgetFilterType($entityName, $namespace), $widget, array('filters' => $filters));
-
-        return $form;
-    }
-
-    /**
-     * create form new for WidgetFilter
-     * @param Form           $form
-     * @param WidgetFilter $widget
-     * @param string         $slot
-     * @param Page           $page
-     * @param string         $entity
+     * @param boolean        $mode
      *
-     * @return new form
+     * @return $form
+     *
+     * @throws \Exception
      */
-    public function renderNewForm($form, $widget, $slot, $page, $entity = null)
+    public function buildWidgetForm($widget, BasePage $page, $entityName = null, $namespace = null, $mode = Widget::MODE_STATIC)
     {
+        //test parameters
+        if ($entityName !== null) {
+            if ($namespace === null) {
+                throw new \Exception('The namespace is mandatory if the entityName is given');
+            }
+        }
 
-        return $this->container->get('victoire_templating')->render(
-            "VictoireFilterBundle::new.html.twig",
+        $container = $this->container;
+        $formFactory = $container->get('form.factory');
+        $router = $this->container->get('router');
+        $formAlias = 'victoire_widget_form_'.strtolower($this->getWidgetName());
+
+        $filters = $this->container->get('victoire_core.filter_chain')->getFilters();
+
+        //are we updating or creating the widget?
+        if ($widget->getId() === null) {
+            $formUrl = $router->generate('victoire_core_widget_create',
+                array(
+                    'page' => $page->getId(),
+                    'slot' => $widget->getSlot(),
+                    'type' => $widget->getType(),
+                    'entity' => $entityName
+                )
+            );
+        } else {
+            $formUrl = $router->generate('victoire_core_widget_update',
+                array(
+                    'id' => $widget->getId(),
+                    'type' => $entityName
+                )
+            );
+        }
+
+        $form = $formFactory->create($formAlias, $widget,
             array(
-                "widget"          => $widget,
-                'form'            => $form->createView(),
-                "slot"            => $slot,
-                "entity"          => $entity,
-                "renderContainer" => true,
-                "page"            => $page
+                'entityName' => $entityName,
+                'namespace' => $namespace,
+                'mode' => $mode,
+                'filters' => $filters,
+                'action'  => $formUrl,
+                'method' => 'POST'
             )
         );
+
+        return $form;
     }
 }

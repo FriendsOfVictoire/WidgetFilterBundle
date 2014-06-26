@@ -1,15 +1,15 @@
 <?php
-namespace Victoire\FilterBundle\Filter;
+namespace Victoire\Widget\FilterBundle\Filter;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\QueryBuilder;
-use Victoire\FilterBundle\Filter\BaseFilterInterface;
+use Victoire\Widget\FilterBundle\Filter\BaseFilterInterface;
 
 abstract class BaseFilter extends AbstractType implements BaseFilterInterface
 {
-    public function buildQuery(QueryBuilder &$qb, array $parameters)
+    public function buildQuery(QueryBuilder $qb, array $parameters)
     {
     }
 

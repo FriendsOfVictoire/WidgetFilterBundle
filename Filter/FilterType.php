@@ -1,6 +1,6 @@
 <?php
 
-namespace Victoire\FilterBundle\Filter;
+namespace Victoire\Widget\FilterBundle\Filter;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,12 +17,6 @@ use Doctrine\ORM\EntityManager;
  */
 class FilterType extends AbstractType
 {
-    protected $em;
-
-    public function __construct(EntityManager $em)
-    {
-        $this->em = $em;
-    }
     /**
      * define form fields
      * @param FormBuilderInterface $builder
@@ -32,33 +26,35 @@ class FilterType extends AbstractType
     {
         $builder
             ->add('listing', 'hidden', array(
-                'data' => $options['list_id']
+                'data' => $options['listing_id']
             ));
 
         foreach ($options['filters'] as $filter) {
             $builder->add($filter, $filter);
         }
-
-
     }
 
     /**
-     * {@inheritdoc}
+     * Set the options
+     *
+     * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'csrf_protection'   => false,
-            'list_id'   => null,
+            'listing_id'   => null,
             'filters'   => array(),
         ));
     }
 
     /**
      * get form name
+     *
+     * @return String The name of the form
      */
     public function getName()
     {
-        return 'filter';
+        return 'victoire_form_filter';
     }
 }

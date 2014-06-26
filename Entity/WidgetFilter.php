@@ -1,5 +1,5 @@
 <?php
-namespace Victoire\FilterBundle\Entity;
+namespace Victoire\Widget\FilterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Victoire\Bundle\CoreBundle\Entity\Widget;
@@ -12,28 +12,26 @@ use Victoire\Bundle\CoreBundle\Entity\Widget;
  */
 class WidgetFilter extends Widget
 {
-    use \Victoire\Bundle\CoreBundle\Entity\Traits\WidgetTrait;
-
     /**
      * @var string
      *
-     * @ORM\ManyToOne(targetEntity="Victoire\ListingBundle\Entity\WidgetListing")
-     * @ORM\JoinColumn(name="listing_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="Victoire\Widget\ListingBundle\Entity\WidgetListing", inversedBy="items")
+     * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="CASCADE")
      *
      */
-    private $listing;
+    protected $listing;
 
     /**
      * filters
      * @ORM\Column(name="filters", type="array")
      */
-    private $filters;
+    protected $filters;
 
     /**
      * ajax
      * @ORM\Column(name="ajax", type="boolean")
      */
-    private $ajax = true;
+    protected $ajax = true;
 
     /**
      * Set list

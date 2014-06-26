@@ -1,10 +1,15 @@
 <?php
-namespace Victoire\FilterBundle\Translation;
+namespace Victoire\Widget\FilterBundle\Translation;
 
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;
 use JMS\TranslationBundle\Model\FileSource;
 
+/**
+ *
+ * @author Thomas Beaujean
+ *
+ */
 class DynamicTranslations implements TranslationContainerInterface
 {
     /**
@@ -14,7 +19,8 @@ class DynamicTranslations implements TranslationContainerInterface
     public static function getTranslationMessages()
     {
         return array(
-            new Message('widget.filter.new.action.label'),
+            new Message('modal.form.widget.type.filter.label', 'victoire'),
+            new Message('widget.filter.new.action.label', 'victoire'),
         );
     }
 }

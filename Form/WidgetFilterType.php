@@ -1,6 +1,6 @@
 <?php
 
-namespace Victoire\FilterBundle\Form;
+namespace Victoire\Widget\FilterBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,9 +23,11 @@ class WidgetFilterType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = array();
+
         foreach ($options['filters'] as $filter) {
             $choices[$filter->getName()] = 'widget_filter.' . $filter->getName();
         }
+
         $builder->add('listing', null, array(
                     'label' => 'widget_filter.form.list.label'
                 ))
@@ -37,6 +39,13 @@ class WidgetFilterType extends WidgetType
                     'multiple' => true,
                     'choices' => $choices
                 ));
+
+        $mode = $options['mode'];
+
+        //add the mode to the form
+        $builder->add('mode', 'hidden', array(
+            'data' => $mode
+        ));
     }
 
 
@@ -46,8 +55,10 @@ class WidgetFilterType extends WidgetType
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        parent::setDefaultOptions($resolver);
+
         $resolver->setDefaults(array(
-            'data_class'         => 'Victoire\FilterBundle\Entity\WidgetFilter',
+            'data_class'         => 'Victoire\Widget\FilterBundle\Entity\WidgetFilter',
             'widget'             => 'filter',
             'filters'            => array(),
             'translation_domain' => 'victoire'
@@ -56,9 +67,11 @@ class WidgetFilterType extends WidgetType
 
     /**
      * get form name
+     *
+     * @return string
      */
     public function getName()
     {
-        return 'appventus_victoirecorebundle_widgetfiltertype';
+        return 'victoire_widget_form_filter';
     }
 }
