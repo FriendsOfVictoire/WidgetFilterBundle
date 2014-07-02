@@ -6,6 +6,7 @@ services:
         class: Victoire\Widget\FilterBundle\Widget\Manager\WidgetFilterManager
         arguments: 
             - "@service_container"
+            - "Filter"
 
     widget_filter_manager:
         alias: victoire_core.twig.widget_filter_manager

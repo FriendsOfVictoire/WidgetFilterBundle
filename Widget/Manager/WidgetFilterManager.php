@@ -40,17 +40,6 @@ use Victoire\Bundle\PageBundle\Entity\BasePage;
 class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInterface
 {
     /**
-     * The name of the widget
-     *
-     * @return string
-     */
-    public function getWidgetName()
-    {
-        return 'Filter';
-    }
-
-
-    /**
      * Get the static content of the widget
      *
      * @param Widget $widget
