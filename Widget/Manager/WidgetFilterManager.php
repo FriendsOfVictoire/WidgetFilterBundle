@@ -11,7 +11,7 @@ use Victoire\Bundle\CoreBundle\Widget\Managers\BaseWidgetManager;
 use Victoire\Bundle\CoreBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Widget\Managers\WidgetManagerInterface;
 
-use Victoire\Bundle\PageBundle\Entity\BasePage;
+use Victoire\Bundle\PageBundle\Entity\Page;
 
 /**
  * CRUD operations on WidgetRedactor Widget
@@ -89,7 +89,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
     /**
      * create a form with given widget
      * @param WidgetRedactor $widget
-     * @param BasePage       $page
+     * @param Page       $page
      * @param string         $entityName
      * @param string         $namespace
      * @param boolean        $mode
@@ -98,7 +98,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
      *
      * @throws \Exception
      */
-    public function buildWidgetForm($widget, BasePage $page, $entityName = null, $namespace = null, $mode = Widget::MODE_STATIC)
+    public function buildWidgetForm($widget, Page $page, $entityName = null, $namespace = null, $mode = Widget::MODE_STATIC)
     {
         //test parameters
         if ($entityName !== null) {
