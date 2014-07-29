@@ -6,9 +6,26 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\QueryBuilder;
 use Victoire\Widget\FilterBundle\Filter\BaseFilterInterface;
+use Doctrine\ORM\EntityManager;
 
 abstract class BaseFilter extends AbstractType implements BaseFilterInterface
 {
+
+    protected $em;
+    protected $request;
+
+    /**
+     *
+     * @param EntityManager $em
+     *
+     * @param Request $request
+     */
+    public function __construct(EntityManager $em, $request)
+    {
+        $this->em = $em;
+        $this->request = $request;
+    }
+
     public function buildQuery(QueryBuilder $qb, array $parameters)
     {
     }

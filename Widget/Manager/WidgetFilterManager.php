@@ -2,11 +2,6 @@
 
 namespace Victoire\Widget\FilterBundle\Widget\Manager;
 
-
-use Victoire\Widget\FilterBundle\Form\WidgetFilterType;
-use Victoire\Widget\FilterBundle\Entity\WidgetFilter;
-
-
 use Victoire\Bundle\CoreBundle\Widget\Managers\BaseWidgetManager;
 use Victoire\Bundle\CoreBundle\Entity\Widget;
 use Victoire\Bundle\CoreBundle\Widget\Managers\WidgetManagerInterface;
@@ -42,7 +37,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
     /**
      * Get the static content of the widget
      *
-     * @param Widget $widget
+     * @param  Widget $widget
      * @return string The static content
      *
      * @throws Exception
@@ -64,14 +59,13 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
 
         $formFactory = $this->container->get('form.factory');
         $router = $this->container->get('router');
-        $routerGenerator = $router->getGenerator();
         $filterForm = $formFactory->create('victoire_form_filter', null, $options);
 
         if ($widget->getPage()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
-            $action = $routerGenerator->generate('victoire_core_widget_show', array('id' => $widgetListing->getId()));
+            $action = $router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getEntity() ? $widget->getEntity()->getId() : null));
             $ajax = true;
         } else {
-            $action = $routerGenerator->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
+            $action = $router->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
             $ajax = false;
         }
 
@@ -85,11 +79,10 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
         return $content;
     }
 
-
     /**
      * create a form with given widget
      * @param WidgetRedactor $widget
-     * @param Page       $page
+     * @param Page           $page
      * @param string         $entityName
      * @param string         $namespace
      * @param boolean        $mode
