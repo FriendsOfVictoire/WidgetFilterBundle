@@ -54,7 +54,8 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
 
         $options = array(
             'listing_id' => $widgetListing->getId(),
-            'filters' => $widget->getFilters()
+            'filters' => $widget->getFilters(),
+            'widget' => $widget
         );
 
         $formFactory = $this->container->get('form.factory');

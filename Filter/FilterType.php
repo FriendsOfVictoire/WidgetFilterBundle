@@ -5,12 +5,6 @@ namespace Victoire\Widget\FilterBundle\Filter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Victoire\Bundle\CoreBundle\Form\EntityProxyFormType;
-use Symfony\Component\Form\Extension\Core\ChoiceList\ChoiceList;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManager;
-
-
 
 /**
  * Filter type
@@ -20,7 +14,7 @@ class FilterType extends AbstractType
     /**
      * define form fields
      * @param FormBuilderInterface $builder
-     * @param array                $options
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -30,7 +24,7 @@ class FilterType extends AbstractType
             ));
 
         foreach ($options['filters'] as $filter) {
-            $builder->add($filter, $filter);
+            $builder->add($filter, $filter, $options);
         }
     }
 
@@ -44,6 +38,7 @@ class FilterType extends AbstractType
         $resolver->setDefaults(array(
             'csrf_protection'   => false,
             'listing_id'   => null,
+            'widget'   => null,
             'filters'   => array(),
         ));
     }

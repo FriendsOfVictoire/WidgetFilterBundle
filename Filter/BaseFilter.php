@@ -36,6 +36,12 @@ abstract class BaseFilter extends AbstractType implements BaseFilterInterface
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
+        $resolver->setDefaults(array(
+            'csrf_protection'   => false,
+            'widget'   => null,
+            'filters'   => array(),
+            'listing_id'   => null,
+        ));
     }
 
     public function getName()
