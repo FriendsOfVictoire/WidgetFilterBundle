@@ -63,7 +63,7 @@ class WidgetFilterManager extends BaseWidgetManager implements WidgetManagerInte
         $filterForm = $formFactory->create('victoire_form_filter', null, $options);
 
         if ($widget->getPage()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
-            $action = $router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getEntity() ? $widget->getEntity()->getId() : null));
+            $action = $router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getBusinessEntity() ? $widget->getBusinessEntity()->getId() : null));
             $ajax = true;
         } else {
             $action = $router->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
