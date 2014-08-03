@@ -7,7 +7,7 @@ use Victoire\Bundle\CoreBundle\Entity\Widget;
 /**
  * WidgetFilter
  *
- * @ORM\Table("cms_widget_filter")
+ * @ORM\Table("vic_widget_filter")
  * @ORM\Entity
  */
 class WidgetFilter extends Widget
@@ -35,8 +35,8 @@ class WidgetFilter extends Widget
 
     /**
      * Set list
-     *
      * @param string $listing
+     *
      * @return WidgetFilter
      */
     public function setListing($listing)
@@ -58,8 +58,8 @@ class WidgetFilter extends Widget
 
     /**
      * Set filters
-     *
      * @param string $filters
+     *
      * @return FilterWidget
      */
     public function setFilters($filters)
@@ -80,8 +80,8 @@ class WidgetFilter extends Widget
     }
     /**
      * Set ajax
-     *
      * @param string $ajax
+     *
      * @return FilterWidget
      */
     public function setAjax($ajax)
@@ -102,4 +102,3 @@ class WidgetFilter extends Widget
     }
 
 }
-
