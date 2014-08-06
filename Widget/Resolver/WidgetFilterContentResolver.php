@@ -67,7 +67,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 
         $filterForm = $this->formFactory->create('victoire_form_filter', null, $options);
 
-        if ($widget->getPage()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
+        if ($widget->getView()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
             $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getEntity() ? $widget->getEntity()->getId() : null));
             $ajax = true;
         } else {
