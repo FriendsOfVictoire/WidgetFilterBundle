@@ -9,8 +9,6 @@ use Victoire\Widget\FilterBundle\DependencyInjection\Compiler\FilterCompilerPass
 
 /**
  *
- * @author Thomas Beaujean
- *
  */
 class VictoireWidgetFilterBundle extends Bundle
 {

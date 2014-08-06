@@ -7,8 +7,6 @@ use Symfony\Component\DependencyInjection\Reference;
 
 /**
  *
- * @author Thomas Beaujean
- *
  */
 class FilterCompilerPass implements CompilerPassInterface
 {
