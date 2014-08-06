@@ -2,7 +2,7 @@
 namespace Victoire\Widget\FilterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Victoire\Bundle\CoreBundle\Entity\Widget;
+use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
  * WidgetFilter
@@ -36,7 +36,7 @@ class WidgetFilter extends Widget
     /**
      * Set list
      *
-     * @param string $listing
+     * @param  string       $listing
      * @return WidgetFilter
      */
     public function setListing($listing)
@@ -59,7 +59,7 @@ class WidgetFilter extends Widget
     /**
      * Set filters
      *
-     * @param string $filters
+     * @param  string       $filters
      * @return FilterWidget
      */
     public function setFilters($filters)
@@ -81,7 +81,7 @@ class WidgetFilter extends Widget
     /**
      * Set ajax
      *
-     * @param string $ajax
+     * @param  string       $ajax
      * @return FilterWidget
      */
     public function setAjax($ajax)
@@ -102,4 +102,3 @@ class WidgetFilter extends Widget
     }
 
 }
-
