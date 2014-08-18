@@ -44,12 +44,11 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
     /**
      * Get the static content of the widget
      *
-     * @param  Widget $widget
+     * @param Widget $widget
+     *
      * @return string The static content
      *
      * @throws Exception
-     *
-     * @SuppressWarnings checkUnusedFunctionParameters
      */
     public function getWidgetStaticContent(Widget $widget)
     {
@@ -67,11 +66,11 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 
         $filterForm = $this->formFactory->create('victoire_form_filter', null, $options);
 
-        if ($widget->getView()->getId() === $widgetListing->getPage()->getId() && $widget->getAjax()) {
+        if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
             $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getEntity() ? $widget->getEntity()->getId() : null));
             $ajax = true;
         } else {
-            $action = $this->router->generate('victoire_core_page_show', array('url' => $widgetListing->getPage()->getUrl()));
+            $action = $this->router->generate('victoire_core_page_show', array('url' => $widgetListing->getView()->getUrl()));
             $ajax = false;
         }
 
