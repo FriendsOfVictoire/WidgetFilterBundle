@@ -1,6 +1,6 @@
 <?php
 
-namespace Victoire\Widget\FilterBundle\Widget\Resolver;
+namespace Victoire\Widget\FilterBundle\Resolver;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Routing\Router;

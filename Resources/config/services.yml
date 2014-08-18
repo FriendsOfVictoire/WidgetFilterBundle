@@ -3,7 +3,7 @@ services:
         class: Victoire\Widget\FilterBundle\Filter\Chain\FilterChain
 
     victoire_core.widget_filter_content_resolver:
-        class: Victoire\Widget\FilterBundle\Widget\Resolver\WidgetFilterContentResolver
+        class: Victoire\Widget\FilterBundle\Resolver\WidgetFilterContentResolver
         arguments:
             - @form.factory
             - @router
