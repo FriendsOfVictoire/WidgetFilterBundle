@@ -16,7 +16,7 @@ class WidgetFilter extends Widget
      * @var string
      *
      * @ORM\ManyToOne(targetEntity="Victoire\Widget\ListingBundle\Entity\WidgetListing", inversedBy="items")
-     * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="SET NULL")
      *
      */
     protected $listing;
