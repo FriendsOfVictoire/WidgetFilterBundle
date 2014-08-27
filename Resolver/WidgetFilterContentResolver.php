@@ -4,6 +4,7 @@ namespace Victoire\Widget\FilterBundle\Resolver;
 
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Routing\Router;
+use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
 
@@ -35,11 +36,13 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 {
     private $formFactory; // @form.factory
     private $router;      // @router
+    private $currentView;      // @victoire_core.current_view
 
-    public function __construct(FormFactory $formFactory, Router $router)
+    public function __construct(FormFactory $formFactory, Router $router, CurrentViewHelper $currentView)
     {
         $this->formFactory = $formFactory;
         $this->router = $router;
+        $this->currentView = $currentView;
     }
     /**
      * Get the static content of the widget
@@ -67,7 +70,8 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
         $filterForm = $this->formFactory->create('victoire_form_filter', null, $options);
 
         if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
-            $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'entity' => $widget->getEntity() ? $widget->getEntity()->getId() : null));
+            $currentView = $this->currentView;
+            $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'view' => $currentView()->getId(), 'entity' => $currentView()->getBusinessEntity()->getId()));
             $ajax = true;
         } else {
             $action = $this->router->generate('victoire_core_page_show', array('url' => $widgetListing->getView()->getUrl()));
