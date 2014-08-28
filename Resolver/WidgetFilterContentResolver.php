@@ -71,7 +71,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 
         if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
             $currentView = $this->currentView;
-            $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'view' => $currentView()->getId(), 'entity' => $currentView()->getBusinessEntity()->getId()));
+            $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'viewReferenceId' => $currentView()->getReference()['id']));
             $ajax = true;
         } else {
             $action = $this->router->generate('victoire_core_page_show', array('url' => $widgetListing->getView()->getUrl()));
