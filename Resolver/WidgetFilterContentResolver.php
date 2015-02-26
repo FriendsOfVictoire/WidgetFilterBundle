@@ -64,8 +64,9 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 
         $options = array(
             'listing_id' => $widgetListing->getId(),
-            'filters' => $widget->getFilters(),
-            'widget' => $widget
+            'filter'     => $widget->getFilter(),
+            'multiple'   => $widget->getMultiple(),
+            'widget'     => $widget,
         );
 
         $filterForm = $this->formFactory->create('victoire_form_filter', null, $options);
@@ -83,7 +84,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             "widget" => $widget,
             "action" => $action,
             "ajax" => $ajax,
-            "filterForm"  => $filterForm->createView()
+            "filterForm"  => $filterForm->createView(),
         );
 
         $reflect = new \ReflectionClass($widget);
@@ -93,10 +94,8 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
                 $value = $accessor->getValue($widget, $property->getName());
                 $parameters[$property->getName()] = $value;
             }
-
         }
 
         return $parameters;
     }
-
 }

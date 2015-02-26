@@ -20,11 +20,11 @@ class FilterType extends AbstractType
     {
         $builder
             ->add('listing', 'hidden', array(
-                'data' => $options['listing_id']
+                'data' => $options['listing_id'],
             ));
 
-        foreach ($options['filters'] as $filter) {
-            $builder->add($filter, $filter, $options);
+        if ($options['filter']) {
+            $builder->add($options['filter'], $options['filter'], $options);
         }
     }
 
@@ -36,10 +36,11 @@ class FilterType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'csrf_protection'   => false,
-            'listing_id'   => null,
-            'widget'   => null,
-            'filters'   => array(),
+            'csrf_protection' => false,
+            'listing_id'      => null,
+            'widget'          => null,
+            'multiple'        => false,
+            'filter'          => null,
         ));
     }
 

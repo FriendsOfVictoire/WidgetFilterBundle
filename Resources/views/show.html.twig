@@ -1,10 +1,10 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
-    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %} >
-    {% for filter in widget.filters %}
-        {{ form_widget(attribute(filterForm, filter)) }}
-    {% endfor %}
+    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %}>
+    {% if widget.filter %}
+        {{ form_widget(attribute(filterForm, widget.filter)) }}
+    {% endif %}
     {{ form_rest(filterForm) }}
     <input type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
     </form>

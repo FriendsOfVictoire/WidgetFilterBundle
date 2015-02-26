@@ -22,10 +22,15 @@ class WidgetFilter extends Widget
     protected $listing;
 
     /**
-     * filters
-     * @ORM\Column(name="filters", type="array")
+     * filter
+     * @ORM\Column(name="filter", type="string", length=55, nullable=true)
      */
-    protected $filters;
+    protected $filter;
+
+    /**
+     * @ORM\Column(name="multiple", type="boolean")
+     */
+    protected $multiple = true;
 
     /**
      * ajax
@@ -57,26 +62,26 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set filters
-     * @param string $filters
+     * Set filter
+     * @param string $filter
      *
      * @return FilterWidget
      */
-    public function setFilters($filters)
+    public function setFilter($filter)
     {
-        $this->filters = $filters;
+        $this->filter = $filter;
 
         return $this;
     }
 
     /**
-     * Get filters
+     * Get filter
      *
      * @return string
      */
-    public function getFilters()
+    public function getFilter()
     {
-        return $this->filters;
+        return $this->filter;
     }
     /**
      * Set ajax
@@ -101,4 +106,26 @@ class WidgetFilter extends Widget
         return $this->ajax;
     }
 
+    /**
+     * Get multiple
+     *
+     * @return string
+     */
+    public function getMultiple()
+    {
+        return $this->multiple;
+    }
+
+    /**
+     * Set multiple
+     * @param string $multiple
+     *
+     * @return $this
+     */
+    public function setMultiple($multiple)
+    {
+        $this->multiple = $multiple;
+
+        return $this;
+    }
 }

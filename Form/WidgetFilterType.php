@@ -11,7 +11,6 @@ use Victoire\Bundle\CoreBundle\Form\WidgetType;
  */
 class WidgetFilterType extends WidgetType
 {
-
     /**
      * define form fields
      * @param FormBuilderInterface $builder
@@ -22,26 +21,29 @@ class WidgetFilterType extends WidgetType
         $choices = array();
 
         foreach ($options['filters'] as $filter) {
-            $choices[$filter->getName()] = 'widget_filter.' . $filter->getName();
+            $choices[$filter->getName()] = 'widget_filter.'.$filter->getName();
         }
 
         $builder->add('listing', null, array(
-                    'label' => 'widget_filter.form.list.label'
+                    'label' => 'widget_filter.form.list.label',
+                ))
+                ->add('filter', 'choice', array(
+                    'label' => 'widget_filter.form.filters.label',
+                    'choices' => $choices,
                 ))
                 ->add('ajax', null, array(
-                    'label' => 'widget_filter.form.ajax.label'
+                    'label' => 'widget_filter.form.ajax.label',
                 ))
-                ->add('filters', 'choice', array(
-                    'label' => 'widget_filter.form.filters.label',
-                    'multiple' => true,
-                    'choices' => $choices
-                ));
+                ->add('multiple', null, array(
+                    'label' => 'widget_filter.form.multiple.label',
+                ))
+                ;
 
         $mode = $options['mode'];
 
         //add the mode to the form
         $builder->add('mode', 'hidden', array(
-            'data' => $mode
+            'data' => $mode,
         ));
     }
 
@@ -57,7 +59,7 @@ class WidgetFilterType extends WidgetType
             'data_class'         => 'Victoire\Widget\FilterBundle\Entity\WidgetFilter',
             'widget'             => 'filter',
             'filters'            => array(),
-            'translation_domain' => 'victoire'
+            'translation_domain' => 'victoire',
         ));
     }
 

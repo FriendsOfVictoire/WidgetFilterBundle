@@ -18,10 +18,6 @@
         <source>widget.filter.new.action.label</source>
         <target>Filtre</target>
       </trans-unit>
-      <trans-unit id="17dd1ed4a4ca9785f38cd4a62fbb68ea85a1ac27" resname="widget_filter.form.ajax.label">
-        <source>widget_filter.form.ajax.label</source>
-        <target>Ajax</target>
-      </trans-unit>
       <trans-unit id="d472e1682ee126380c99cbec0bea7dbc32202ad0" resname="widget_filter.form.filters.label">
         <source>widget_filter.form.filters.label</source>
         <target>Filtre</target>
@@ -42,6 +38,10 @@
         <source>widget_filter.form.ajax.label</source>
         <target>Mode ajax</target>
         <jms:reference-file line="33">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
+      </trans-unit>
+      <trans-unit id="d4a4ca9785f38cd4a6217dd1efbb68ea85a1ac27" resname="widget_filter.form.multiple.label">
+        <source>widget_filter.form.multiple.label</source>
+        <target>Choix multiple ?</target>
       </trans-unit>
       <trans-unit id="d472e1682ee126380c99cbec0bea7dbc32202ad0" resname="widget_filter.form.filters.label">
         <source>widget_filter.form.filters.label</source>
