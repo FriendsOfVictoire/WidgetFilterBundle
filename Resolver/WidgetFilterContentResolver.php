@@ -3,6 +3,7 @@
 namespace Victoire\Widget\FilterBundle\Resolver;
 
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Routing\Router;
 use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
@@ -84,6 +85,16 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             "ajax" => $ajax,
             "filterForm"  => $filterForm->createView()
         );
+
+        $reflect = new \ReflectionClass($widget);
+        $accessor = PropertyAccess::createPropertyAccessor();
+        foreach ($reflect->getProperties() as $property) {
+            if (!$property->isStatic()) {
+                $value = $accessor->getValue($widget, $property->getName());
+                $parameters[$property->getName()] = $value;
+            }
+
+        }
 
         return $parameters;
     }
