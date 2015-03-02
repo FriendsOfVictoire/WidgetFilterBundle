@@ -1,7 +1,7 @@
 {
     "name": "victoire/filter-widget",
     "type": "symfony-bundle",
-    "description": "Victoire Cms Filter widget",
+    "description": "Victoire WebStation filter widget",
     "keywords": ["cms", "victoire", "widget", "filter"],
     "homepage": "http://appventus.com",
     "license": "MIT",
@@ -12,9 +12,10 @@
         }
     ],
     "require": {
-        "php"                                 : ">=5.3.3",
-        "symfony/framework-bundle"            : "~2.3",
-        "victoire/victoire"                   : ">=0.1.4"
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": "~2.3",
+        "beberlei/DoctrineExtensions": "dev-master",
+        "victoire/victoire": ">=0.1.4"
     },    
     "autoload": {
         "psr-0": { "Victoire\\Widget\\FilterBundle": "" }
