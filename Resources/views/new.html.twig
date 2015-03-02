@@ -3,17 +3,18 @@
 {% block form_static %}
     <div id="picker-{{ form.mode.vars.data }}" class="vic-tab-pane {% if form.mode.vars.data == widget.mode %}vic-active{% endif %}">
         {{ form_start(form) }}
-            <div class="vic-row">
-                <div class="col-md-8">
-                    {{ form_row(form.listing) }}            
-                    {{ form_row(form.filter) }}            
-                </div>
-                <div class="col-md-4">
-                    {{ form_row(form.ajax) }}            
-                    {{ form_row(form.multiple) }}            
-                </div>
+        <div class="vic-row">
+            <div class="col-md-8">
+                {{ form_row(form.listing) }}
+                {{ form_row(form.filter) }}
             </div>
-            {{form_rest(form)}}
-        {{ form_end(form) }}
+            <div class="col-md-4">
+                {{ form_row(form.ajax) }}
+                {% if form.multiple is defined %}
+                {{ form_row(form.multiple) }}
+                {% endif %}
+                {{ form_end(form) }}
+            </div>
+        </div>
     </div>
 {% endblock form_static %}

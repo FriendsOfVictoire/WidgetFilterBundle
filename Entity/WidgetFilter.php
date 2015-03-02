@@ -28,6 +28,12 @@ class WidgetFilter extends Widget
     protected $filter;
 
     /**
+     * filter
+     * @ORM\Column(name="format", type="string", length=55, nullable=true)
+     */
+    protected $format;
+
+    /**
      * @ORM\Column(name="multiple", type="boolean")
      */
     protected $multiple = true;
@@ -125,6 +131,29 @@ class WidgetFilter extends Widget
     public function setMultiple($multiple)
     {
         $this->multiple = $multiple;
+
+        return $this;
+    }
+
+    /**
+     * Get format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
+     * Set format
+     * @param string $format
+     *
+     * @return $this
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
 
         return $this;
     }

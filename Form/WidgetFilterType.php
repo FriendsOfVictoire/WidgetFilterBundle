@@ -5,12 +5,22 @@ namespace Victoire\Widget\FilterBundle\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 
 /**
  * WidgetFilter form type
  */
 class WidgetFilterType extends WidgetType
 {
+    private $eventDispatcher;
+
+    public function __construct(EventDispatcherInterface $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+
     /**
      * define form fields
      * @param FormBuilderInterface $builder
@@ -30,14 +40,26 @@ class WidgetFilterType extends WidgetType
                 ->add('filter', 'choice', array(
                     'label' => 'widget_filter.form.filters.label',
                     'choices' => $choices,
+                    'attr' => array(
+                        'data-refreshOnChange' => "true",
+                    ),
                 ))
                 ->add('ajax', null, array(
                     'label' => 'widget_filter.form.ajax.label',
                 ))
                 ->add('multiple', null, array(
                     'label' => 'widget_filter.form.multiple.label',
-                ))
-                ;
+                ));
+
+        // manage conditional relatedView type in preset data
+        $builder->get('filter')->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SET_DATA, $event);
+        });
+
+        // manage conditional relatedView type in pre submit (ajax call to refresh view)
+        $builder->get('filter')->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SUBMIT, $event);
+        });
 
         $mode = $options['mode'];
 
