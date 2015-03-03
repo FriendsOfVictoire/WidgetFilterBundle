@@ -1,11 +1,19 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
-    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %}>
+    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %} id="form-filter-{{ widget.id }}">
     {% if widget.filter %}
         {{ form_widget(attribute(filterForm, widget.filter)) }}
     {% endif %}
     {{ form_rest(filterForm) }}
-    <input type="submit" value="{{ 'ok'|trans|desc('Ok') }}" />
+    {% if ajax or not multiple %}
+    <script>
+        $('#form-filter-{{ widget.id }} input').on('change', function(e) {
+            $(e.target).parents('form').submit();
+        });
+    </script>
+    {% else %}
+    <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
+    {% endif %}
     </form>
 {% endblock content %}

@@ -51,7 +51,6 @@ class WidgetFilterType extends WidgetType
                     'label' => 'widget_filter.form.multiple.label',
                 ));
 
-        // manage conditional relatedView type in preset data
         $builder->get('filter')->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SET_DATA, $event);
         });
