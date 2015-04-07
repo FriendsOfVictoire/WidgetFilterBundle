@@ -1,5 +1,5 @@
 {
-    "name": "victoire/filter-widget",
+    "name": "appventus/filter-widget",
     "type": "symfony-bundle",
     "description": "Victoire WebStation filter widget",
     "keywords": ["cms", "victoire", "widget", "filter"],
