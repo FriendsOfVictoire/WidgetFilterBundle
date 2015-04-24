@@ -1,13 +1,13 @@
-Victoire CMS Filter Bundle
+Victoire Filter Bundle
 ============
 
-Need to add a filter in a victoire cms website ?
+Need to add a filter in a victoire website ?
 Get this filter bundle and so on
 
 First you need to have a valid Symfony2 Victoire edition.
 Then you just have to run the following composer command :
 
-    php composer.phar require friendsvictoire/filter-widget
+    php composer.phar require friendsofvictoire/filter-widget
 
 Do not forget to add the bundle in your AppKernel !
 
