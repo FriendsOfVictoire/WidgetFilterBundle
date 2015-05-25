@@ -34,6 +34,12 @@ class WidgetFilter extends Widget
     protected $format;
 
     /**
+     * filter
+     * @ORM\Column(name="defaultValue", type="string", length=55, nullable=true)
+     */
+    protected $defaultValue;
+
+    /**
      * @ORM\Column(name="multiple", type="boolean")
      */
     protected $multiple = true;
@@ -154,6 +160,29 @@ class WidgetFilter extends Widget
     public function setFormat($format)
     {
         $this->format = $format;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultValue
+     *
+     * @return string
+     */
+    public function getDefaultValue()
+    {
+        return $this->defaultValue;
+    }
+
+    /**
+     * Set defaultValue
+     * @param string $defaultValue
+     *
+     * @return $this
+     */
+    public function setDefaultValue($defaultValue)
+    {
+        $this->defaultValue = $defaultValue;
 
         return $this;
     }
