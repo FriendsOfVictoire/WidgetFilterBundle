@@ -24,13 +24,3 @@ services:
         class: Victoire\Widget\FilterBundle\Filter\FilterType
         tags:
             - { name: form.type , alias: victoire_form_filter}
-
-    victoire.widget_filter.form.listener.presetdata:
-        class: Victoire\Widget\FilterBundle\EventListener\WidgetFilterFormEventListener
-        tags:
-            - { name: kernel.event_listener, event: victoire.widget_filter.form.pre_set_data, method: manageExtraFiltersFields, priority: 1 }
-
-    victoire.widget_filter.form.listener.presubmit:
-        class: Victoire\Widget\FilterBundle\EventListener\WidgetFilterFormEventListener
-        tags:
-            - { name: kernel.event_listener, event: victoire.widget_filter.form.pre_submit, method: manageExtraFiltersFields, priority: 1 }
