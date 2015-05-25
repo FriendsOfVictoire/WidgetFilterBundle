@@ -23,3 +23,11 @@ Do not forget to add the bundle in your AppKernel !
             return $bundles;
         }
     }
+
+**Create you're custom filter with VictoireFilterBundle**
+
+[VictoireFilterBundle]: https://github.com/victoire/victoire/blob/master/Bundle/FilterBundle/README.md "Readme Victoire Filter"
+
+**Manage ExtraFields for your custom Filter**
+
+[ManageExtrafields]: https://github.com/FriendsOfVictoire/WidgetFilterBundle/doc/manageExtraFields.md "Readme Manage ExtraFields"
