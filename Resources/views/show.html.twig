@@ -8,9 +8,9 @@
     {{ form_rest(filterForm) }}
     {% if ajax or not multiple %}
     <script>
-        $('#form-filter-{{ widget.id }} input').on('change', function(e) {
-            $(e.target).parents('form').submit();
-        });
+    $(document).on('change', '#form-filter-{{ widget.id }} input, #form-filter-{{ widget.id }} select', function(e) {
+        $(e.target).parents('form').submit();
+    });
     </script>
     {% else %}
     <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
