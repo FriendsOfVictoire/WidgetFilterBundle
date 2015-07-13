@@ -11,6 +11,9 @@
         $('#form-filter-{{ widget.id }} input').on('change', function(e) {
             $(e.target).parents('form').submit();
         });
+        $('#form-filter-{{ widget.id }} select').on('change', function(e) {
+            $(e.target).parents('form').submit();
+        });
     </script>
     {% else %}
     <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
