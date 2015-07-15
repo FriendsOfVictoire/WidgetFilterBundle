@@ -13,9 +13,13 @@
         $('#canvasloader-container--overlay').fadeIn();
         var form = $(this).parents('form');
         var update = 'widget-{{widget.listing.id}}-container';
-        var formData = [];
+        var formData = '';
         $('form[data-widget-listing="{{widget.listing.id}}"]').each(function(index, elem){
-            formData = $.merge($(this).serialize(), formData);
+            if (formData != ''){
+                formData +='&';
+            }
+            formData += $(this).serialize();
+            console.log(formData);
         });
         $.ajax({
             url: $(this).parents('form').attr('action'),
