@@ -23,4 +23,4 @@ services:
     victoire.form.filter:
         class: Victoire\Widget\FilterBundle\Filter\FilterType
         tags:
-            - { name: form.type , alias: victoire_form_filter}
+            - { name: form.type , alias: filter}

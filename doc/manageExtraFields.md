@@ -64,7 +64,7 @@ You can now for example add your logic in your filter:
             if ($this->request->query->has('filter') && array_key_exists('text_filter', $this->request->query->get('filter'))) {
                 $this->request->query->replace(
                     array(
-                        'victoire_form_filter' => array(
+                        'filter' => array(
                             $this->getName() => array(
                                 'title' => $options['widget']->getDefaultValue()
                             ),

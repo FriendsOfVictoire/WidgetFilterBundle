@@ -51,6 +51,6 @@ class FilterType extends AbstractType
      */
     public function getName()
     {
-        return 'victoire_form_filter';
+        return 'filter';
     }
 }
