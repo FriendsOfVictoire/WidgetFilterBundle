@@ -20,7 +20,6 @@
                 formData +='&';
             }
             formData += $(this).serialize();
-            console.log(formData);
         });
         $.ajax({
             url: $(this).parents('form').attr('action'),
