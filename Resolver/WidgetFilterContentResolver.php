@@ -69,7 +69,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             'widget'     => $widget,
         );
 
-        $filterForm = $this->formFactory->create('victoire_form_filter', null, $options);
+        $filterForm = $this->formFactory->create('filter', null, $options);
 
         if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
             $currentView = $this->currentView;

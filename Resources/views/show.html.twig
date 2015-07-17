@@ -1,7 +1,7 @@
 {% extends 'VictoireCoreBundle:Widget:show.html.twig' %}
 
 {% block content %}
-    <form method="GET" action="{{action}}" {% if ajax %}data-toggle="ajax" class="ajax" update="widget-{{widget.listing.id}}-container"{% endif %} data-widget-listing="{{widget.listing.id}}" id="form-filter-{{ widget.id }}">
+    <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.listing.id}}-container" data-widget-listing="{{widget.listing.id}}"{% endif %}  id="form-filter-{{ widget.id }}">
     {% if widget.filter %}
         {{ form_widget(attribute(filterForm, widget.filter)) }}
     {% endif %}
@@ -9,9 +9,10 @@
     {% if ajax or not multiple %}
     <script>
     $(document).on('change', '#form-filter-{{ widget.id }} input, #form-filter-{{ widget.id }} select', function(e) {
+        var form = $(this).parents('form');
+        {% if ajax %}
         $('#canvasloader-container').fadeIn();
         $('#canvasloader-container--overlay').fadeIn();
-        var form = $(this).parents('form');
         var update = 'widget-{{widget.listing.id}}-container';
         var formData = '';
         $('form[data-widget-listing="{{widget.listing.id}}"]').each(function(index, elem){
@@ -19,7 +20,6 @@
                 formData +='&';
             }
             formData += $(this).serialize();
-            console.log(formData);
         });
         $.ajax({
             url: $(this).parents('form').attr('action'),
@@ -30,6 +30,9 @@
                 ajaxify(jsonResponse, update, 'html');
             }
         });
+        {% else %}
+        form.submit();
+        {% endif %}
     });
     </script>
     {% else %}
