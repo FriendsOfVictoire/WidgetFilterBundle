@@ -48,6 +48,10 @@
         <target>Filtres</target>
         <jms:reference-file line="36">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
       </trans-unit>
+      <trans-unit id="widget_filterstrictlabel" resname="widget_filter.form.strict.label">
+        <source>widget_filter.form.strict.label</source>
+        <target>Dois contenir tout les champs?</target>
+      </trans-unit>
       <trans-unit id="666e2af4eb2e64c52b2d081b4f79e99c1749ed71" resname="widget_filter.form.list.label">
         <source>widget_filter.form.list.label</source>
         <target>Widget liste à filtrer</target>

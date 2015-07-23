@@ -49,13 +49,23 @@ class WidgetFilterType extends WidgetType
                 ))
                 ->add('multiple', null, array(
                     'label' => 'widget_filter.form.multiple.label',
+                    'attr' => array(
+                        'data-refreshOnChange' => "true",
+                    ),
                 ));
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SET_DATA_WIDGET, $event);
+        });
 
         $builder->get('filter')->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SET_DATA, $event);
         });
 
         // manage conditional relatedView type in pre submit (ajax call to refresh view)
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
+            $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SUBMIT_WIDGET, $event);
+        });
         $builder->get('filter')->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
             $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SUBMIT, $event);
         });

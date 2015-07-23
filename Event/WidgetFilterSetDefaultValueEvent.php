@@ -23,8 +23,9 @@ class WidgetFilterSetDefaultValueEvent extends Event
     {
         $this->form = $form;
         $this->data = $data;
-        $this->businessEntityName = $form->getData()->getListing()->getBusinessEntityName();
-    }
+        if ($form->getData()->getListing()) {
+            $this->businessEntityName = $form->getData()->getListing()->getBusinessEntityName();
+        }    }
 
     /**
      * Returns the form at the source of the event.
