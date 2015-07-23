@@ -28,6 +28,11 @@ class WidgetFilter extends Widget
     protected $filter;
 
     /**
+     * @ORM\Column(name="strict", type="boolean")
+     */
+    protected $strict = false;
+
+    /**
      * filter
      * @ORM\Column(name="format", type="string", length=55, nullable=true)
      */
