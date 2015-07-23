@@ -191,4 +191,29 @@ class WidgetFilter extends Widget
 
         return $this;
     }
+    
+
+    /**
+     * is strict
+     *
+     * @return string
+     */
+    public function isStrict()
+    {
+        return $this->strict;
+    }
+
+    /**
+     * Set strict
+     *
+     * @param string $strict
+     *
+     * @return $this
+     */
+    public function setStrict($strict)
+    {
+        $this->strict = $strict;
+
+        return $this;
+    }
 }
