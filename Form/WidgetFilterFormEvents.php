@@ -18,9 +18,11 @@ final class WidgetFilterFormEvents
      * @Event
      */
     const PRE_SUBMIT = 'victoire.widget_filter.form.pre_submit';
+    const PRE_SUBMIT_WIDGET = 'victoire.widget_filter.widget.form.pre_submit';
 
     /**
      * The FormEvents::PRE_SET_DATA event is dispatched at the beginning of the Form::setData() method.
+     * The FormEvents::PRE_SET_DATA_widget event is dispatched at the beginning of the Form::setData() method.
      *
      * It can be used to:
      *  - Modify the data given during pre-population;
@@ -30,4 +32,5 @@ final class WidgetFilterFormEvents
      * @Event
      */
     const PRE_SET_DATA = 'victoire.widget_filter.form.pre_set_data';
+    const PRE_SET_DATA_WIDGET = 'victoire.widget_filter.widget.form.pre_set_data';
 }
