@@ -24,3 +24,9 @@ services:
         class: Victoire\Widget\FilterBundle\Filter\FilterType
         tags:
             - { name: form.type , alias: filter}
+
+
+    victoire.widget.form.filter.subscriber:
+        class: Victoire\Widget\FilterBundle\Listener\WidgetFormFilterSubscriber
+        tags:
+            - { name: kernel.event_subscriber }
