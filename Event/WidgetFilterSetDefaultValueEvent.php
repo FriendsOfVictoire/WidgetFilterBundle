@@ -11,7 +11,7 @@ class WidgetFilterSetDefaultValueEvent extends Event
 {
     private $form;
     protected $data;
-    private $businessEntityName;
+    private $businessEntityId;
 
     /**
      * Constructs an event.
@@ -24,8 +24,9 @@ class WidgetFilterSetDefaultValueEvent extends Event
         $this->form = $form;
         $this->data = $data;
         if ($form->getData()->getListing()) {
-            $this->businessEntityName = $form->getData()->getListing()->getBusinessEntityName();
-        }    }
+            $this->businessEntityId = $form->getData()->getListing()->getBusinessEntityId();
+        }
+    }
 
     /**
      * Returns the form at the source of the event.
@@ -57,25 +58,25 @@ class WidgetFilterSetDefaultValueEvent extends Event
         $this->data = $data;
     }
     /**
-     * Get businessEntityName
+     * Get businessEntityId
      *
      * @return string
      */
-    public function getBusinessEntityName()
+    public function getBusinessEntityId()
     {
-        return $this->businessEntityName;
+        return $this->businessEntityId;
     }
 
     /**
-     * Set businessEntityName
+     * Set businessEntityId
      *
-     * @param string $businessEntityName
+     * @param string $businessEntityId
      *
      * @return $this
      */
-    public function setBusinessEntityName($businessEntityName)
+    public function setBusinessEntityId($businessEntityId)
     {
-        $this->businessEntityName = $businessEntityName;
+        $this->businessEntityId = $businessEntityId;
 
         return $this;
     }
