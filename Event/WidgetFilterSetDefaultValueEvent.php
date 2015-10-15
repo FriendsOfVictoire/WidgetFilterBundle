@@ -57,8 +57,9 @@ class WidgetFilterSetDefaultValueEvent extends Event
     {
         $this->data = $data;
     }
+
     /**
-     * Get businessEntityId
+     * Get businessEntityId.
      *
      * @return string
      */
@@ -68,7 +69,7 @@ class WidgetFilterSetDefaultValueEvent extends Event
     }
 
     /**
-     * Set businessEntityId
+     * Set businessEntityId.
      *
      * @param string $businessEntityId
      *

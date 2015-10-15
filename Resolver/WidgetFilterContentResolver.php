@@ -10,7 +10,7 @@ use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
 
 /**
- * CRUD operations on WidgetRedactor Widget
+ * CRUD operations on WidgetRedactor Widget.
  *
  * The widget view has two parameters: widget and content
  *
@@ -31,7 +31,6 @@ use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
  * If you just want to use the widget and not the content, remove the method that throws the exceptions.
  *
  * By default, the methods throws Exception to notice the developer that he should implements it owns logic for the widget
- *
  */
 class WidgetFilterContentResolver extends BaseWidgetContentResolver
 {
@@ -45,14 +44,15 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
         $this->router = $router;
         $this->currentView = $currentView;
     }
+
     /**
-     * Get the static content of the widget
+     * Get the static content of the widget.
      *
      * @param Widget $widget
      *
-     * @return string The static content
-     *
      * @throws Exception
+     *
+     * @return string The static content
      */
     public function getWidgetStaticContent(Widget $widget)
     {
@@ -62,30 +62,30 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             throw new \Exception('The widget ['.$widget->getId().'] has no widgetListing.');
         }
 
-        $options = array(
+        $options = [
             'listing_id' => $widgetListing->getId(),
             'filter'     => $widget->getFilter(),
             'multiple'   => $widget->getMultiple(),
             'widget'     => $widget,
-        );
+        ];
 
         $filterForm = $this->formFactory->create('filter', null, $options);
 
         if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
             $currentView = $this->currentView;
-            $action = $this->router->generate('victoire_core_widget_show', array('id' => $widgetListing->getId(), 'viewReferenceId' => $currentView()->getReference()['id']));
+            $action = $this->router->generate('victoire_core_widget_show', ['id' => $widgetListing->getId(), 'viewReferenceId' => $currentView()->getReference()['id']]);
             $ajax = true;
         } else {
-            $action = $this->router->generate('victoire_core_page_show', array('url' => $widgetListing->getView()->getUrl()));
+            $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getView()->getUrl()]);
             $ajax = false;
         }
 
-        $parameters = array(
-            "widget" => $widget,
-            "action" => $action,
-            "ajax" => $ajax,
-            "filterForm"  => $filterForm->createView(),
-        );
+        $parameters = [
+            'widget'      => $widget,
+            'action'      => $action,
+            'ajax'        => $ajax,
+            'filterForm'  => $filterForm->createView(),
+        ];
 
         $reflect = new \ReflectionClass($widget);
         $accessor = PropertyAccess::createPropertyAccessor();

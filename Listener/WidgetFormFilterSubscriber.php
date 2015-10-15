@@ -3,23 +3,21 @@
 namespace Victoire\Widget\FilterBundle\Listener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Victoire\Widget\FilterBundle\Form\WidgetFilterFormEvents;
 use Symfony\Component\Form\FormEvent;
+use Victoire\Widget\FilterBundle\Form\WidgetFilterFormEvents;
 
 /**
- * Class WidgetFormFilterSubscriber
- *
+ * Class WidgetFormFilterSubscriber.
  */
 class WidgetFormFilterSubscriber implements EventSubscriberInterface
 {
-
     public static function getSubscribedEvents()
     {
         // Liste des évènements écoutés et méthodes à appeler
-        return array(
-            WidgetFilterFormEvents::PRE_SUBMIT_WIDGET => 'addDynamicFieldsPreSubmitWidget',
-            WidgetFilterFormEvents::PRE_SET_DATA_WIDGET => 'addDynamicFieldsPreSetDataWidget'
-        );
+        return [
+            WidgetFilterFormEvents::PRE_SUBMIT_WIDGET   => 'addDynamicFieldsPreSubmitWidget',
+            WidgetFilterFormEvents::PRE_SET_DATA_WIDGET => 'addDynamicFieldsPreSetDataWidget',
+        ];
     }
 
     public function addDynamicFieldsPreSetDataWidget(FormEvent $event)
@@ -28,6 +26,7 @@ class WidgetFormFilterSubscriber implements EventSubscriberInterface
         $data = $event->getData();
         $this->addDynamicFields($form, $data->getMultiple());
     }
+
     public function addDynamicFieldsPreSubmitWidget(FormEvent $event)
     {
         $form = $event->getForm();
@@ -35,16 +34,15 @@ class WidgetFormFilterSubscriber implements EventSubscriberInterface
         $this->addDynamicFields($form, array_key_exists('multiple', $data) ? $data['multiple'] : false);
     }
 
-    private function addDynamicFields($form , $multiple)
+    private function addDynamicFields($form, $multiple)
     {
-        if($form->has('multiple'))
-        {
+        if ($form->has('multiple')) {
             if ($multiple) {
                 $form
-                    ->add('strict', null, array(
+                    ->add('strict', null, [
                         'label' => 'widget_filter.form.strict.label',
-                    ));
-            }else{
+                    ]);
+            } else {
                 $form->remove('strict');
             }
         }
