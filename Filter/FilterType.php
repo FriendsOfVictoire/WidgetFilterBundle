@@ -7,21 +7,22 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * Filter type
+ * Filter type.
  */
 class FilterType extends AbstractType
 {
     /**
-     * define form fields
+     * define form fields.
+     *
      * @param FormBuilderInterface $builder
      * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('listing', 'hidden', array(
+            ->add('listing', 'hidden', [
                 'data' => $options['listing_id'],
-            ));
+            ]);
 
         if ($options['filter']) {
             $builder->add($options['filter'], $options['filter'], $options);
@@ -29,25 +30,25 @@ class FilterType extends AbstractType
     }
 
     /**
-     * Set the options
+     * Set the options.
      *
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'csrf_protection' => false,
             'listing_id'      => null,
             'widget'          => null,
             'multiple'        => false,
             'filter'          => null,
-        ));
+        ]);
     }
 
     /**
-     * get form name
+     * get form name.
      *
-     * @return String The name of the form
+     * @return string The name of the form
      */
     public function getName()
     {

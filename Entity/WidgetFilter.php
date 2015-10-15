@@ -1,11 +1,12 @@
 <?php
+
 namespace Victoire\Widget\FilterBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Victoire\Bundle\WidgetBundle\Entity\Widget;
 
 /**
- * WidgetFilter
+ * WidgetFilter.
  *
  * @ORM\Table("vic_widget_filter")
  * @ORM\Entity
@@ -17,12 +18,12 @@ class WidgetFilter extends Widget
      *
      * @ORM\ManyToOne(targetEntity="Victoire\Widget\ListingBundle\Entity\WidgetListing", inversedBy="items")
      * @ORM\JoinColumn(name="list_id", referencedColumnName="id", onDelete="SET NULL")
-     *
      */
     protected $listing;
 
     /**
-     * filter
+     * filter.
+     *
      * @ORM\Column(name="filter", type="string", length=55, nullable=true)
      */
     protected $filter;
@@ -33,13 +34,15 @@ class WidgetFilter extends Widget
     protected $strict = false;
 
     /**
-     * filter
+     * filter.
+     *
      * @ORM\Column(name="format", type="string", length=55, nullable=true)
      */
     protected $format;
 
     /**
-     * filter
+     * filter.
+     *
      * @ORM\Column(name="defaultValue", type="string", length=55, nullable=true)
      */
     protected $defaultValue;
@@ -50,13 +53,15 @@ class WidgetFilter extends Widget
     protected $multiple = true;
 
     /**
-     * ajax
+     * ajax.
+     *
      * @ORM\Column(name="ajax", type="boolean")
      */
     protected $ajax = true;
 
     /**
-     * Set list
+     * Set list.
+     *
      * @param string $listing
      *
      * @return WidgetFilter
@@ -69,7 +74,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get listing
+     * Get listing.
      *
      * @return string
      */
@@ -79,7 +84,8 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set filter
+     * Set filter.
+     *
      * @param string $filter
      *
      * @return FilterWidget
@@ -92,7 +98,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get filter
+     * Get filter.
      *
      * @return string
      */
@@ -100,8 +106,10 @@ class WidgetFilter extends Widget
     {
         return $this->filter;
     }
+
     /**
-     * Set ajax
+     * Set ajax.
+     *
      * @param string $ajax
      *
      * @return FilterWidget
@@ -114,7 +122,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get ajax
+     * Get ajax.
      *
      * @return string
      */
@@ -124,7 +132,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get multiple
+     * Get multiple.
      *
      * @return string
      */
@@ -134,7 +142,8 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set multiple
+     * Set multiple.
+     *
      * @param string $multiple
      *
      * @return $this
@@ -147,7 +156,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get format
+     * Get format.
      *
      * @return string
      */
@@ -157,7 +166,8 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set format
+     * Set format.
+     *
      * @param string $format
      *
      * @return $this
@@ -170,7 +180,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Get defaultValue
+     * Get defaultValue.
      *
      * @return string
      */
@@ -180,7 +190,8 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set defaultValue
+     * Set defaultValue.
+     *
      * @param string $defaultValue
      *
      * @return $this
@@ -191,10 +202,9 @@ class WidgetFilter extends Widget
 
         return $this;
     }
-    
 
     /**
-     * is strict
+     * is strict.
      *
      * @return string
      */
@@ -204,7 +214,7 @@ class WidgetFilter extends Widget
     }
 
     /**
-     * Set strict
+     * Set strict.
      *
      * @param string $strict
      *
