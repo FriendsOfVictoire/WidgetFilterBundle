@@ -3,12 +3,12 @@
     "type": "symfony-bundle",
     "description": "Victoire DCMS Filter widget",
     "keywords": ["DCMS", "Victoire", "widget", "FriendsofVictoire", "FoV", "Dynamic", "CMS", "Filter"],
-    "homepage": "http://appventus.com",
+    "homepage": "http://victoire.io",
     "license": "MIT",
     "authors": [
         {
             "name": "Paul Andrieux",
-            "email": "paul@appventus.com"
+            "email": "paul@victoire.io"
         }
     ],
     "require": {
