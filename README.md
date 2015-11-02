@@ -1,13 +1,21 @@
-Victoire Filter Bundle
+Victoire DCMS Filter Bundle
 ============
 
-Need to add a filter in a victoire website ?
-Get this filter bundle and so on
+##What is the purpose of this bundle
 
-First you need to have a valid Symfony2 Victoire edition.
-Then you just have to run the following composer command :
+This bundle gives you access to the *Filter Widget*.
+
+##Set Up Victoire
+
+If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/setup.md)*
+
+##Install the Bundle
+
+Run the following composer command :
 
     php composer.phar require friendsofvictoire/filter-widget
+
+###Reminder
 
 Do not forget to add the bundle in your AppKernel !
 
@@ -24,10 +32,10 @@ Do not forget to add the bundle in your AppKernel !
         }
     }
 
-**Create you're custom filter with VictoireFilterBundle**
+**Create your custom filter with VictoireFilterBundle**
 
-[VictoireFilterBundle]: https://github.com/victoire/victoire/blob/master/Bundle/FilterBundle/README.md "Readme Victoire Filter"
+[VictoireFilterBundle](https://github.com/victoire/victoire/blob/master/Bundle/FilterBundle/README.md)
 
 **Manage ExtraFields for your custom Filter**
 
-[ManageExtrafields]: https://github.com/FriendsOfVictoire/WidgetFilterBundle/doc/manageExtraFields.md "Readme Manage ExtraFields"
+[ManageExtrafields](https://github.com/FriendsOfVictoire/WidgetFilterBundle/doc/manageExtraFields.md)
