@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:jms="urn:jms:translation" version="1.2">
-  <file source-language="en" target-language="fr" datatype="plaintext" original="not.available">
+  <file source-language="en" target-language="en" datatype="plaintext" original="not.available">
     <header>
       <tool tool-id="JMSTranslationBundle" tool-name="JMSTranslationBundle" tool-version="1.1.0-DEV"/>
       <note>The source node in most cases contains the sample message as written by the developer. If it looks like a dot-delimitted string such as "form.label.firstname", then the developer has not provided a default message.</note>
@@ -8,32 +8,32 @@
     <body>
       <trans-unit id="d472e1682ee126380c99cbec0bea7dbc32202ad0" resname="widget_filter.form.filters.label">
         <source>widget_filter.form.filters.label</source>
-        <target>Filtres</target>
+        <target>Filters</target>
       </trans-unit>
       <trans-unit id="666e2af4eb2e64c52b2d081b4f79e99c1749ed71" resname="widget_filter.form.list.label">
         <source>widget_filter.form.list.label</source>
-        <target>Liste</target>
+        <target>List</target>
       </trans-unit>
       <trans-unit id="1b923cf14f446e4c3193095d92965bc320875c86" resname="widget.filter.new.action.label">
         <source>widget.filter.new.action.label</source>
-        <target>Filtres</target>
+        <target>Filters</target>
       </trans-unit>
       <trans-unit id="1b923cf14f446e4c3193095d92965bc320875c87" resname="modal.form.widget.type.filter.label">
         <source>modal.form.widget.type.filter.label</source>
-        <target>Filtres</target>
+        <target>Filters</target>
       </trans-unit>
       <trans-unit id="17dd1ed4a4ca9785f38cd4a62fbb68ea85a1ac27" resname="widget_filter.form.ajax.label">
         <source>widget_filter.form.ajax.label</source>
-        <target>Mode ajax</target>
+        <target>Ajax mode</target>
         <jms:reference-file line="33">FilterBundle/Form/WidgetFilterType.php</jms:reference-file>
       </trans-unit>
       <trans-unit id="d4a4ca9785f38cd4a6217dd1efbb68ea85a1ac27" resname="widget_filter.form.multiple.label">
         <source>widget_filter.form.multiple.label</source>
-        <target>Choix multiple ?</target>
+        <target>Multiple choice ?</target>
       </trans-unit>
       <trans-unit id="widget_filterstrictlabel" resname="widget_filter.form.strict.label">
         <source>widget_filter.form.strict.label</source>
-        <target>Doit contenir tous les champs ?</target>
+        <target>Must contain all the fields ?</target>
       </trans-unit>
     </body>
   </file>
