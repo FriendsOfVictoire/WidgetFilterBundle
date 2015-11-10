@@ -16,7 +16,8 @@
         "symfony/framework-bundle"      : "~2.3",
         "beberlei/DoctrineExtensions"   : "dev-master",
         "victoire/victoire"             : "~1.3.0",
-        "lexik/form-filter-bundle"      : "3.*@dev"
+        "lexik/form-filter-bundle"      : "3.*@dev",
+        "appventus/ajax-bundle"         : "dev-master"
     },    
     "autoload": {
         "psr-0": { "Victoire\\Widget\\FilterBundle": "" }
