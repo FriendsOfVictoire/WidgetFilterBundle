@@ -23,10 +23,10 @@
     "require"          : {
         "php"                        : ">=5.3.3",
         "symfony/framework-bundle"   : "~2.3",
-        "beberlei/DoctrineExtensions": "dev-master",
-        "victoire/victoire"          : ">=1.3.6",
+        "beberlei/DoctrineExtensions": "1.0.x-dev",
+        "victoire/victoire"          : "^1.3.7",
         "lexik/form-filter-bundle"   : "3.*@dev",
-        "appventus/ajax-bundle"      : "dev-master"
+        "appventus/ajax-bundle"      : "^1.2.0"
     },
     "autoload"         : {
         "psr-0": {
