@@ -3,10 +3,12 @@
 namespace Victoire\Widget\FilterBundle\Form;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
 
 /**
@@ -38,7 +40,7 @@ class WidgetFilterType extends WidgetType
         $builder->add('listing', null, [
                     'label' => 'widget_filter.form.list.label',
                 ])
-                ->add('filter', 'choice', [
+                ->add('filter', ChoiceType::class, [
                     'label'   => 'widget_filter.form.filters.label',
                     'choices' => $choices,
                     'attr'    => [
@@ -74,19 +76,17 @@ class WidgetFilterType extends WidgetType
         $mode = $options['mode'];
 
         //add the mode to the form
-        $builder->add('mode', 'hidden', [
+        $builder->add('mode', HiddenType::class, [
             'data' => $mode,
         ]);
     }
 
     /**
-     * bind form to WidgetRedactor entity.
-     *
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        parent::setDefaultOptions($resolver);
+        parent::configureOptions($resolver);
 
         $resolver->setDefaults([
             'data_class'         => 'Victoire\Widget\FilterBundle\Entity\WidgetFilter',
@@ -94,15 +94,5 @@ class WidgetFilterType extends WidgetType
             'filters'            => [],
             'translation_domain' => 'victoire',
         ]);
-    }
-
-    /**
-     * get form name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'victoire_widget_form_filter';
     }
 }

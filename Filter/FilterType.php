@@ -3,8 +3,9 @@
 namespace Victoire\Widget\FilterBundle\Filter;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Filter type.
@@ -20,7 +21,7 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('listing', 'hidden', [
+            ->add('listing', HiddenType::class, [
                 'data' => $options['listing_id'],
             ]);
 
@@ -30,28 +31,16 @@ class FilterType extends AbstractType
     }
 
     /**
-     * Set the options.
-     *
-     * @param OptionsResolverInterface $resolver
+     * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
+        $resolver->configureOptions([
             'csrf_protection' => false,
             'listing_id'      => null,
             'widget'          => null,
             'multiple'        => false,
             'filter'          => null,
         ]);
-    }
-
-    /**
-     * get form name.
-     *
-     * @return string The name of the form
-     */
-    public function getName()
-    {
-        return 'filter';
     }
 }

@@ -17,13 +17,13 @@ services:
         arguments:
             - @event_dispatcher
         tags:
-            - { name: form.type , alias: victoire_widget_form_filter}
+            - { name: form.type }
 
     #alias to the form
     victoire.form.filter:
         class: Victoire\Widget\FilterBundle\Filter\FilterType
         tags:
-            - { name: form.type , alias: filter}
+            - { name: form.type }
 
 
     victoire.widget.form.filter.subscriber:

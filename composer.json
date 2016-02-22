@@ -1,41 +1,37 @@
 {
-    "name"             : "friendsofvictoire/filter-widget",
-    "type"             : "symfony-bundle",
-    "description"      : "Victoire DCMS Filter widget",
-    "keywords"         : [
+    "name": "friendsofvictoire/filter-widget",
+    "type": "symfony-bundle",
+    "description": "Victoire DCMS Filter widget",
+    "keywords": [
         "DCMS",
         "Victoire",
         "widget",
         "FriendsofVictoire",
-        "FoV",
-        "Dynamic",
-        "CMS",
         "Filter"
     ],
-    "homepage"         : "http://victoire.io",
-    "license"          : "MIT",
-    "authors"          : [
+    "license": "MIT",
+    "authors": [
         {
             "name" : "Paul Andrieux",
             "email": "paul@victoire.io"
         }
     ],
-    "require"          : {
-        "php"                        : ">=5.3.3",
-        "symfony/framework-bundle"   : "~2.3",
-        "beberlei/DoctrineExtensions": "dev-master",
-        "victoire/victoire"          : "~1.3.0",
-        "lexik/form-filter-bundle"   : "3.*@dev",
-        "appventus/ajax-bundle"      : "dev-master"
+    "require": {
+        "php": ">=5.5.9",
+        "symfony/framework-bundle": "~2.8|~3.0",
+        "beberlei/DoctrineExtensions": "1.0.x-dev",
+        "victoire/victoire": "~1.5",
+        "lexik/form-filter-bundle": "~5.0",
+        "appventus/ajax-bundle": "1.*@dev"
     },
-    "autoload"         : {
+    "autoload": {
         "psr-0": {
             "Victoire\\Widget\\FilterBundle": ""
         }
     },
     "minimum-stability": "dev",
-    "target-dir"       : "Victoire/Widget/FilterBundle",
-    "extra"            : {
+    "target-dir": "Victoire/Widget/FilterBundle",
+    "extra": {
         "branch-alias": {
             "dev-master": "1.3.x-dev"
         }
