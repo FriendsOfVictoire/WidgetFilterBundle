@@ -8,10 +8,9 @@ services:
         tags:
             - { name: victoire_widget.widget_content_resolver, alias: Filter }
 
-    #alias to the entity
     victoire.widget.filter:
         class: Victoire\Widget\FilterBundle\Entity\WidgetFilter
-    #alias to the form
+
     victoire.widget.form.filter:
         class: Victoire\Widget\FilterBundle\Form\WidgetFilterType
         arguments:
@@ -19,14 +18,14 @@ services:
         tags:
             - { name: form.type }
 
-    #alias to the form
     victoire.form.filter:
         class: Victoire\Widget\FilterBundle\Filter\FilterType
         tags:
             - { name: form.type }
 
-
     victoire.widget.form.filter.subscriber:
         class: Victoire\Widget\FilterBundle\Listener\WidgetFormFilterSubscriber
+        arguments:
+            - "@=service('victoire_core.filter_chain').getFilters()"
         tags:
             - { name: kernel.event_subscriber }

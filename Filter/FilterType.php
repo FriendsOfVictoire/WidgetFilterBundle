@@ -5,6 +5,9 @@ namespace Victoire\Widget\FilterBundle\Filter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\Util\StringUtil;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -26,7 +29,7 @@ class FilterType extends AbstractType
             ]);
 
         if ($options['filter']) {
-            $builder->add($options['filter'], $options['filter'], $options);
+            $builder->add(StringUtil::fqcnToBlockPrefix($options['filter']), $options['filter'], $options);
         }
     }
 
@@ -35,7 +38,7 @@ class FilterType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->configureOptions([
+        $resolver->setDefaults([
             'csrf_protection' => false,
             'listing_id'      => null,
             'widget'          => null,

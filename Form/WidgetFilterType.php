@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Victoire\Bundle\CoreBundle\Form\WidgetType;
+use Victoire\Bundle\FilterBundle\Filter\BaseFilter;
 
 /**
  * WidgetFilter form type.
@@ -32,18 +33,19 @@ class WidgetFilterType extends WidgetType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $choices = [];
-
         foreach ($options['filters'] as $filter) {
-            $choices[$filter->getName()] = 'widget_filter.'.$filter->getName();
+            /** @var BaseFilter $filter */
+            $choices['widget_filter.'.$filter->getName()] = $filter->getName();
         }
 
         $builder->add('listing', null, [
                     'label' => 'widget_filter.form.list.label',
                 ])
                 ->add('filter', ChoiceType::class, [
-                    'label'   => 'widget_filter.form.filters.label',
-                    'choices' => $choices,
-                    'attr'    => [
+                    'label'             => 'widget_filter.form.filters.label',
+                    'choices'           => $choices,
+                    'choices_as_values' => true,
+                    'attr'              => [
                         'data-refreshOnChange' => 'true',
                     ],
                 ])
@@ -73,11 +75,9 @@ class WidgetFilterType extends WidgetType
             $this->eventDispatcher->dispatch(WidgetFilterFormEvents::PRE_SUBMIT, $event);
         });
 
-        $mode = $options['mode'];
-
         //add the mode to the form
         $builder->add('mode', HiddenType::class, [
-            'data' => $mode,
+            'data' => $options['mode'],
         ]);
     }
 

@@ -3,11 +3,13 @@
 namespace Victoire\Widget\FilterBundle\Resolver;
 
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\Util\StringUtil;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\Routing\Router;
 use Victoire\Bundle\CoreBundle\Helper\CurrentViewHelper;
 use Victoire\Bundle\WidgetBundle\Model\Widget;
 use Victoire\Bundle\WidgetBundle\Resolver\BaseWidgetContentResolver;
+use Victoire\Widget\FilterBundle\Filter\FilterType;
 
 /**
  * CRUD operations on WidgetRedactor Widget.
@@ -69,11 +71,14 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             'widget'     => $widget,
         ];
 
-        $filterForm = $this->formFactory->create('filter', null, $options);
+        $filterForm = $this->formFactory->create(FilterType::class, null, $options);
 
         if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
             $currentView = $this->currentView;
-            $action = $this->router->generate('victoire_core_widget_show', ['id' => $widgetListing->getId(), 'viewReferenceId' => $currentView()->getReference()->getId()]);
+            $action = $this->router->generate('victoire_core_widget_show', [
+                'id' => $widgetListing->getId(),
+                'viewReferenceId' => $currentView()->getReference()->getId()
+            ]);
             $ajax = true;
         } else {
             $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getView()->getUrl()]);
@@ -85,6 +90,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             'action'      => $action,
             'ajax'        => $ajax,
             'filterForm'  => $filterForm->createView(),
+            'filterName'  => StringUtil::fqcnToBlockPrefix($widget->getFilter()),
         ];
 
         $reflect = new \ReflectionClass($widget);
