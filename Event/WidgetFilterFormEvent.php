@@ -4,8 +4,6 @@ namespace Victoire\Widget\FilterBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 
-/**
- */
 class WidgetFilterFormEvent extends Event
 {
     private $form;

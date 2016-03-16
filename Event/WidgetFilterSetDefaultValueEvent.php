@@ -5,8 +5,6 @@ namespace Victoire\Widget\FilterBundle\Event;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\Form\FormInterface;
 
-/**
- */
 class WidgetFilterSetDefaultValueEvent extends Event
 {
     private $form;

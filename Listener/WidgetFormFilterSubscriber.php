@@ -33,7 +33,7 @@ class WidgetFormFilterSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            WidgetFormEvents::PRE_CREATE                => 'addOptions',
+            WidgetFormEvents::PRE_CREATE.'_FILTER'      => 'addOptions',
             WidgetFilterFormEvents::PRE_SUBMIT_WIDGET   => 'addDynamicFieldsPreSubmitWidget',
             WidgetFilterFormEvents::PRE_SET_DATA_WIDGET => 'addDynamicFieldsPreSetDataWidget',
         ];
