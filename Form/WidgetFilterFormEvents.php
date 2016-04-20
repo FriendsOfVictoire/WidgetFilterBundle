@@ -2,9 +2,6 @@
 
 namespace Victoire\Widget\FilterBundle\Form;
 
-/**
- *
- */
 final class WidgetFilterFormEvents
 {
     /**
