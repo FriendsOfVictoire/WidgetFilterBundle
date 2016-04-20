@@ -34,6 +34,14 @@
         form.submit();
         {% endif %}
     });
+    
+    $(document).ready(function(){
+        //Load filter value if set in request get parameters
+        {% for param, value in app.request.get('filter')[widget.filter] %}
+        $('#filter_{{ widget.filter }}_{{ param }}').val('{{ value }}');
+        {% endfor %}
+    });
+
     </script>
     {% else %}
     <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
