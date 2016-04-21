@@ -3,7 +3,7 @@
 {% block content %}
     <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.listing.id}}-container" data-widget-listing="{{widget.listing.id}}"{% endif %}  id="form-filter-{{ widget.id }}">
     {% if widget.filter %}
-        {{ form_widget(attribute(filterForm, widget.filter)) }}
+        {{ form_widget(attribute(filterForm, filterName)) }}
     {% endif %}
     {{ form_rest(filterForm) }}
     {% if ajax or not multiple %}
