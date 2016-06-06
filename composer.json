@@ -30,10 +30,5 @@
         }
     },
     "minimum-stability": "dev",
-    "target-dir": "Victoire/Widget/FilterBundle",
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.5.x-dev"
-        }
-    }
+    "target-dir": "Victoire/Widget/FilterBundle"
 }

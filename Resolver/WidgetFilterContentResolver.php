@@ -73,7 +73,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
 
         $filterForm = $this->formFactory->create(FilterType::class, null, $options);
 
-        if ($widget->getView()->getId() === $widgetListing->getView()->getId() && $widget->getAjax()) {
+        if ($widget->getWidgetMap()->getView()->getId() === $widgetListing->getWidgetMap()->getView()->getId() && $widget->getAjax()) {
             $currentView = $this->currentView;
             $action = $this->router->generate('victoire_core_widget_show', [
                 'id'              => $widgetListing->getId(),
@@ -81,7 +81,7 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             ]);
             $ajax = true;
         } else {
-            $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getView()->getUrl()]);
+            $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getWidgetMap()->getView()->getUrl()]);
             $ajax = false;
         }
 

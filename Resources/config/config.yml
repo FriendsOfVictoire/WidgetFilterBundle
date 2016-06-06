@@ -3,6 +3,7 @@ victoire_core:
         Filter:
             class: "Victoire\\Widget\\FilterBundle\\Entity\\WidgetFilter"
             name: Filter
+            cache: false
 
 jms_translation:
     configs:
