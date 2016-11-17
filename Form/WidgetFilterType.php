@@ -35,7 +35,7 @@ class WidgetFilterType extends WidgetType
         $choices = [];
         foreach ($options['filters'] as $filter) {
             /* @var BaseFilter $filter */
-            $choices['widget_filter.'.$filter->getName()] = $filter->getName();
+            $choices['widget_filter.'.$filter->getName()] = get_class($filter);
         }
 
         $builder->add('listing', null, [
