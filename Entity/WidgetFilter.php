@@ -24,7 +24,7 @@ class WidgetFilter extends Widget
     /**
      * filter.
      *
-     * @ORM\Column(name="filter", type="string", length=55, nullable=true)
+     * @ORM\Column(name="filter", type="string", length=255, nullable=true)
      */
     protected $filter;
 
