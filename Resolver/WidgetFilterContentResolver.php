@@ -81,7 +81,8 @@ class WidgetFilterContentResolver extends BaseWidgetContentResolver
             ]);
             $ajax = true;
         } else {
-            $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getWidgetMap()->getView()->getUrl()]);
+            $currentLocale = $this->currentView->getCurrentView()->getCurrentLocale();
+            $action = $this->router->generate('victoire_core_page_show', ['url' => $widgetListing->getWidgetMap()->getView()->getUrl($currentLocale)]);
             $ajax = false;
         }
 
