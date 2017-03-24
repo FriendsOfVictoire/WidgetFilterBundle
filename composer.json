@@ -1,5 +1,5 @@
 {
-    "name": "friendsofvictoire/filter-widget",
+    "name": "victoire/filter-widget",
     "type": "symfony-bundle",
     "description": "Victoire DCMS Filter widget",
     "keywords": [
