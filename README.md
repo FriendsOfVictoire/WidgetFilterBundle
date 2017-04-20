@@ -1,21 +1,21 @@
 Victoire DCMS Filter Bundle
 ============
 
-##What is the purpose of this bundle
+## What is the purpose of this bundle
 
 This bundle gives you access to the *Filter Widget*.
 
-##Set Up Victoire
+## Set Up Victoire
 
-If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/setup.md)*
+If you haven't already, you can follow the steps to set up Victoire *[here](https://github.com/Victoire/victoire/blob/master/doc/setup.md)*
 
-##Install the Bundle
+## Install the Bundle
 
 Run the following composer command :
 
     php composer.phar require friendsofvictoire/filter-widget
 
-###Reminder
+### Reminder
 
 Do not forget to add the bundle in your AppKernel !
 
@@ -38,4 +38,4 @@ Do not forget to add the bundle in your AppKernel !
 
 **Manage ExtraFields for your custom Filter**
 
-[ManageExtrafields](https://github.com/FriendsOfVictoire/WidgetFilterBundle/doc/manageExtraFields.md)
+[ManageExtrafields](doc/manageExtraFields.md)
