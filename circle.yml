@@ -6,6 +6,8 @@ machine:
     en.victoire.io: 127.0.0.1
   services:
     - redis
+  pre:
+      - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
   php:
     version: 7.1.0
 
