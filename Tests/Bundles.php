@@ -1,5 +1,5 @@
 <?php
 
 $victoireTestBundles = [
-    new \Victoire\Widget\FilterBundle\VictoireWidgetFilterBundle()
+    new Victoire\Widget\FilterBundle\VictoireWidgetFilterBundle(),
 ];
