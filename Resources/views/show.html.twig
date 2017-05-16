@@ -2,52 +2,52 @@
 
 {% block content %}
     <form method="GET" action="{{action}}" {% if ajax %}class="ajax" update="widget-{{widget.listing.id}}-container" data-widget-listing="{{widget.listing.id}}"{% endif %}  id="form-filter-{{ widget.id }}">
-    {% if widget.filter %}
-        {{ form_widget(attribute(filterForm, filterName)) }}
-    {% endif %}
-    {{ form_rest(filterForm) }}
-    {% if ajax or not multiple %}
-    <script>
-    $(document).on('change', '#form-filter-{{ widget.id }} input, #form-filter-{{ widget.id }} select', function(e) {
-        var form = $(this).parents('form');
-        {% if ajax %}
-        $('#canvasloader-container').fadeIn();
-        $('#canvasloader-container--overlay').fadeIn();
-        var update = 'widget-{{widget.listing.id}}-container';
-        var formData = '';
-        $('form[data-widget-listing="{{widget.listing.id}}"]').each(function(index, elem){
-            if (formData != ''){
-                formData +='&';
-            }
-            formData += $(this).serialize();
-        });
-        $.ajax({
-            url: $(this).parents('form').attr('action'),
-            type: 'get',
-            dataType: 'json',
-            data: formData,
-            success: function(jsonResponse) {
-                ajaxify(jsonResponse, update, 'html');
-            }
-        });
-        {% else %}
-        form.submit();
+        {% if widget.filter %}
+            {{ form_widget(attribute(filterForm, filterName)) }}
         {% endif %}
-    });
+        {{ form_rest(filterForm) }}
+        {% if ajax or not multiple %}
+            <script>
+                $(document).on('change', '#form-filter-{{ widget.id }} input, #form-filter-{{ widget.id }} select', function(e) {
+                    var form = $(this).parents('form');
+                    {% if ajax %}
+                    $('#canvasloader-container').fadeIn();
+                    $('#canvasloader-container--overlay').fadeIn();
+                    var update = 'widget-{{widget.listing.id}}-container';
+                    var formData = '';
+                    $('form[data-widget-listing="{{widget.listing.id}}"]').each(function(index, elem){
+                        if (formData != ''){
+                            formData +='&';
+                        }
+                        formData += $(this).serialize();
+                    });
+                    $.ajax({
+                        url: $(this).parents('form').attr('action'),
+                        type: 'get',
+                        dataType: 'json',
+                        data: formData,
+                        success: function(jsonResponse) {
+                            ajaxify(jsonResponse, update, 'html');
+                        }
+                    });
+                    {% else %}
+                    form.submit();
+                    {% endif %}
+                });
 
-    {% set filterParams = app.request.get('filter') %}
-    {% if (filterParams is not null and filterParams[filterName] is defined) %}
-        $(document).ready(function(){
-            //Load filter value if set in request get parameters
-            {% for param, value in filterParams[filterName] %}
-            $('#filter_{{ filterName }}_{{ param }}').val('{{ value }}');
-            {% endfor %}
-        });
-    {% endif %}
+                {% set filterParams = app.request.get('filter') %}
+                {% if (filterParams is not null and filterParams[filterName] is defined) %}
+                $(document).ready(function(){
+                    //Load filter value if set in request get parameters
+                    {% for param, value in filterParams[filterName] %}
+                    $('#filter_{{ filterName }}_{{ param }}').val('{{ value }}');
+                    {% endfor %}
+                });
+                {% endif %}
 
-    </script>
-    {% else %}
-    <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
-    {% endif %}
+            </script>
+        {% else %}
+        <input type="submit" class="btn btn-info btn-sm pull-right" value="{{ 'OK'|trans }}" />
+        {% endif %}
     </form>
 {% endblock content %}
