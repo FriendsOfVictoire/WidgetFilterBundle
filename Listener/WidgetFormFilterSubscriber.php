@@ -3,11 +3,10 @@
 namespace Victoire\Widget\FilterBundle\Listener;
 
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormInterface;
-use Victoire\Bundle\WidgetBundle\Event\WidgetFormCreateEvent;
 use Victoire\Bundle\WidgetBundle\Event\WidgetFormEvents;
+use Victoire\Bundle\WidgetBundle\Event\WidgetFormPreCreateEvent;
 use Victoire\Widget\FilterBundle\Form\WidgetFilterFormEvents;
 
 /**
@@ -40,9 +39,9 @@ class WidgetFormFilterSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param WidgetFormCreateEvent $event
+     * @param WidgetFormPreCreateEvent $event
      */
-    public function addOptions(WidgetFormCreateEvent $event)
+    public function addOptions(WidgetFormPreCreateEvent $event)
     {
         $event->optionsContainer->add('filters', $this->filters);
     }
