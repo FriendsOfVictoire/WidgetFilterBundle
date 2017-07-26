@@ -28,6 +28,8 @@
             data: formData,
             success: function(jsonResponse) {
                 ajaxify(jsonResponse, update, 'html');
+                $('#canvasloader-container').fadeOut();
+                $('#canvasloader-container--overlay').fadeOut();
             }
         });
         {% else %}
