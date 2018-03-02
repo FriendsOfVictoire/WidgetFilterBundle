@@ -79,6 +79,8 @@ class WidgetFilterType extends WidgetType
         $builder->add('mode', HiddenType::class, [
             'data' => $options['mode'],
         ]);
+
+        parent::buildForm($builder, $options);
     }
 
     /**
